@@ -1,0 +1,131 @@
+//
+//  PrefixHeader.pch
+//  MonitoringPlatform
+//
+//  Created by wangjiayu on 2017/4/12.
+//  Copyright © 2017年 wangjiayu. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import "AFNetworking.h"
+#import "ReactiveObjC.h"
+#import "MBProgressHUD.h"
+#import "MBProgressHUD+XMG.h"
+#import "HttpClient.h"
+
+
+
+/****************************************************
+ 通用的宏和常量定义
+ *****************************************************/
+
+#define STATUS_BAR_HEIGHT           20
+#define WINDOW_HEIGHT               [UIApplication sharedApplication].keyWindow.bounds.size.height
+#define WINDOW_WIDTH                [UIApplication sharedApplication].keyWindow.bounds.size.width
+#define CELL_SEPARATOR_COLOR        [UIColor colorWithHex:0xc8c7cc]
+#define IS_iPhone5                  ([UIScreen mainScreen].bounds.size.height == 568 && [UIScreen mainScreen].bounds.size.width == 320)
+#define IS_iPhone_6                 ([UIScreen mainScreen].bounds.size.height == 667 && [UIScreen mainScreen].bounds.size.width == 375)
+#define IS_iPhone_6p                ([UIScreen mainScreen].bounds.size.height == 736 && [UIScreen mainScreen].bounds.size.width == 414)
+
+/****************************************************
+ 通用的宏和常量定义 - End
+ *****************************************************/
+
+
+
+
+
+
+/****************************************************
+ 系统版本检查
+ *****************************************************/
+
+#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
+
+/****************************************************
+ 系统版本检查 - End
+ *****************************************************/
+
+
+
+
+
+/****************************************************
+ App版本检查
+ *****************************************************/
+
+#define APP_VERSION_EQUAL_TO(v)                  ([[[[NSBundle mainBundle] infoDictionary] objectForKey:(__bridge NSString *)kCFBundleVersionKey] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define APP_VERSION_GREATER_THAN(v)              ([[[[NSBundle mainBundle] infoDictionary] objectForKey:(__bridge NSString *)kCFBundleVersionKey] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define APP_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[[NSBundle mainBundle] infoDictionary] objectForKey:(__bridge NSString *)kCFBundleVersionKey] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define APP_VERSION_LESS_THAN(v)                 ([[[[NSBundle mainBundle] infoDictionary] objectForKey:(__bridge NSString *)kCFBundleVersionKey] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define APP_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[[NSBundle mainBundle] infoDictionary] objectForKey:(__bridge NSString *)kCFBundleVersionKey] compare:v options:NSNumericSearch] != NSOrderedDescending)
+
+/****************************************************
+ App版本检查 - End
+ *****************************************************/
+
+
+
+
+
+/****************************************************
+ 日志开关
+ *****************************************************/
+
+#ifdef DEBUG
+#   define NSLog(...) NSLog(__VA_ARGS__)
+#else
+#   define NSLog(...)
+#endif
+
+/****************************************************
+ 日志开关 - End
+ *****************************************************/
+
+
+
+
+/****************************************************
+ 对象有效性宏定义
+ *****************************************************/
+
+// 如果obj为nil或者null，返回@""、@[]或者@{}，否则返回原样返回obj
+// 主要是用在setObject:forKey:或者打印NSString的时候
+#define VALID_STRING(obj)                           ([obj isKindOfClass:[NSString class]] ? obj : @"")
+#define VALID_ARRAY(obj)                            ([obj isKindOfClass:[NSArray class]] ? obj : @[])
+#define VALID_DICTIONARY(obj)                       ([obj isKindOfClass:[NSDictionary class]] ? obj : @{})
+
+/****************************************************
+ 对象有效性宏定义 - End
+ *****************************************************/
+
+
+
+
+
+/****************************************************
+ GCD
+ *****************************************************/
+
+#define GCD_MAIN_QUEUE_BEGIN                dispatch_async(dispatch_get_main_queue(), ^{
+#define GCD_MAIN_QUEUE_END                  });
+
+#define GCD_GLOBAL_QUEUE_BEGIN              dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+#define GCD_GLOBAL_QUEUE_END                });
+
+/****************************************************
+ GDC - End
+ *****************************************************/
+
+
+
+#endif /* PrefixHeader_pch */
