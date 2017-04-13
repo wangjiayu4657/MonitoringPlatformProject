@@ -10,6 +10,7 @@
 #import "ControlCenterViewController.h"
 #import "User.h"
 #import "XTimer.h"
+#import "MaskView.h"
 
 @interface HomeViewController ()
 
@@ -20,9 +21,15 @@
 @property (nonatomic,strong) XTimer *timer1;
 @property (nonatomic,strong) XTimer *timer2;
 
+/** <#desciption#> */
+@property (nonatomic,strong) MaskView *mview;
+
 @end
 
 @implementation HomeViewController
+
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,8 +38,17 @@
     [self getUserInformation];
 }
 
-- (IBAction)requestButton:(id)sender {
+
+
+- (IBAction)requestButton:(UIButton *)sender {
+    [self addMaskView];
     [self initializeTimer];
+}
+
+- (void)addMaskView {
+    self.mview = [[MaskView alloc] init];
+    self.mview.contentLabel.text = @"当前在线2人,预计等候时间2分钟";
+    [self.view addSubview:self.mview];
 }
 
 - (void) initializeTimer {
@@ -75,16 +91,19 @@
     dict[@"userId"] = [self.uid stringValue];
     [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/PreviewController/preview" params:dict resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
+            NSLog(@"预览:%@",responseObject);
             NSInteger code = [responseObject[@"code"] integerValue];
             if (code == 200) {
-//                self.dict = responseObject[@"data"];
                 [self.timer2 stop];
                 [self.timer2 invalidate];
                 self.timer2 = nil;
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.mview removeFromSuperview];
                     [hud hideAnimated:YES];
-//                    [self performSegueWithIdentifier:@"pushCenterController" sender:nil];
+                    [self performSegueWithIdentifier:@"pushCenterController" sender:nil];
                 });
+            }else {
+                self.mview.contentLabel.text = responseObject[@"msg"];
             }
         }else {
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -105,7 +124,7 @@
     dict[@"userId"] = [self.uid stringValue];
     [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/HeartbeatController/addHeart" params:dict resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
-            NSLog(@"心跳 == %@",responseObject);
+//            NSLog(@"心跳 == %@",responseObject);
             if ([responseObject[@"msg"] isEqualToString:@"成功"]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hideAnimated:YES];
@@ -120,10 +139,6 @@
     }];
 }
 
-///添加蒙版视图
-- (void) AddMaskView {
-    
-}
 
 ///获取平台信息
 - (void)getUserInformation {
@@ -136,6 +151,7 @@
     dict[@"userId"] = [self.uid stringValue];
     [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/LoginInformationController/information" params:dict resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
+            self.dict = responseObject[@"data"];
             if ([responseObject[@"msg"] isEqualToString:@"成功"]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hideAnimated:YES];

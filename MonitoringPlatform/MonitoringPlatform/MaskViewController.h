@@ -1,5 +1,5 @@
 //
-//  MaskView.h
+//  MaskViewController.h
 //  MonitoringPlatform
 //
 //  Created by wangjiayu on 2017/4/13.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MaskView : UIView
-
-@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
+@interface MaskViewController : UIViewController
 
 @end

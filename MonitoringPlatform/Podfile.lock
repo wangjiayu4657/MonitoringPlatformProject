@@ -16,17 +16,22 @@ PODS:
     - AFNetworking/NSURLSession
   - MBProgressHUD (1.0.0)
   - ReactiveObjC (3.0.0)
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
 
 DEPENDENCIES:
   - AFNetworking
   - MBProgressHUD
   - ReactiveObjC
+  - SDWebImage
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   ReactiveObjC: ce79989e8684b9086b5f8d0c74bc7b81a8729c9e
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
 
-PODFILE CHECKSUM: 4367ba830c32bbacd45666b123fb6d1327776a8e
+PODFILE CHECKSUM: a5246f73dbe91fafea1f1090057f598538db16d8
 
 COCOAPODS: 1.1.1
