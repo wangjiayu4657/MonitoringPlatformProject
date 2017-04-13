@@ -47,7 +47,10 @@ void StatusCallBack(PLAY_STATE playState, VP_HANDLE hLogin, void *pHandl)
 
 #pragma mark - Preview
 - (IBAction)playAction:(UIButton *)sender {
-
+    NSLog(@"_serverAddress = %@",_serverAddress);
+    NSLog(@"sessionID = %@",_mspInfo.sessionID);
+    NSLog(@"cameraID = %@",_cameraInfo.cameraID);
+    NSLog(@"_realPlayURL = %@",_realPlayURL);
     //获取播放地址
     VMSNetSDK *vmsNetSDK = [VMSNetSDK shareInstance];
     _realPlayURL = [[CRealPlayURL alloc] init];

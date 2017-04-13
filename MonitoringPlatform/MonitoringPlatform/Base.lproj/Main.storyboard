@@ -230,6 +230,7 @@
                     <navigationItem key="navigationItem" title="请求预览" id="8Z0-T0-GPy"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="requestBtn" destination="6md-6H-7Ea" id="4XY-L5-yKw"/>
                         <segue destination="sLe-fs-1Qp" kind="show" identifier="pushCenterController" id="Xcg-Qo-rIX"/>
                     </connections>
                 </viewController>

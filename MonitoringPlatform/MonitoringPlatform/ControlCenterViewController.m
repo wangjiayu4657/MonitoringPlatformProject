@@ -105,7 +105,7 @@
         [alertView show];
         return;
     }
-    
+    NSLog(@"mspInfo = %@",mspInfo);
     //登录成功后推到组织结构的控制器,并给其绑定数据
     ResourceTreeViewController *resourceTreeVC = [[ResourceTreeViewController alloc] init];
     resourceTreeVC.mspInfo = mspInfo;

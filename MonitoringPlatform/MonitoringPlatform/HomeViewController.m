@@ -11,6 +11,8 @@
 #import "User.h"
 #import "XTimer.h"
 #import "MaskView.h"
+#import "NSData+ImageContentType.h"
+#import "UIImage+GIF.h"
 
 @interface HomeViewController ()
 
@@ -23,6 +25,7 @@
 
 /** <#desciption#> */
 @property (nonatomic,strong) MaskView *mview;
+@property (weak, nonatomic) IBOutlet UIButton *requestBtn;
 
 @end
 
@@ -36,6 +39,11 @@
 //    NSLog(@"camera:%@",self.cameraID);
 //    NSLog(@"uid:%@",self.uid);
     [self getUserInformation];
+    
+    NSData *data = UIImagePNGRepresentation([UIImage imageNamed:@"requestButton"]);
+    [self.requestBtn setBackgroundImage:[UIImage sd_animatedGIFWithData:data] forState:UIControlStateNormal];
+    
+    
 }
 
 

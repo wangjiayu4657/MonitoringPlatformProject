@@ -91,6 +91,7 @@
                               toRegionList:tempArray];
         [_allResorceList addObjectsFromArray:tempArray];
         [tempArray removeAllObjects];
+        
         //获取区域下的设备
         [vmsNetSDK getCameraListFromRegion:_serverAddress
                                toSessionID:_mspInfo.sessionID

@@ -907,8 +907,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xinju.testProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1149d281-218a-40ac-b636-39fa035a86bd";
-				PROVISIONING_PROFILE_SPECIFIER = testProjectDistribution;
+				PROVISIONING_PROFILE = "086c59fb-6d5c-49f0-a77a-4d7a4362aaf1";
+				PROVISIONING_PROFILE_SPECIFIER = testProjecAdHoc;
 			};
 			name = Release;
 		};

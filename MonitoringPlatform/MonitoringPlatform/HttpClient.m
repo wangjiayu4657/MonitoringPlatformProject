@@ -76,59 +76,59 @@ NSString * const kBeauticianErrorDomain = @"com.m3w4.beautician.httperror";
                                                         URLString:URLString
                                                        parameters:mutableParams
                                                           success:^(NSURLSessionDataTask *task, id responseObject) {
-                                                              NSLog(@"Request URL: %@", [task.originalRequest.URL absoluteString]);
-//                                                              NSLog(@"Response Object:\n%@", responseObject);
-                                                              NSLog(@"Response Headers:\n%@", ((NSHTTPURLResponse *)(task.response)).allHeaderFields);
-                                                              
-                                                              //              if ([responseObject isKindOfClass:[NSDictionary class]] == NO) {
-                                                              //                  responseObject = nil;
-                                                              //              }
-                                                              
-                                                              if (resultBlock) {
-                                                                  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
-                                                                      resultBlock(responseObject, nil);
-                                                                  });
-                                                              }
-                                                              
-                                                              /*
-                                                               BOOL isSuccess = [responseObject[@"success"] toBool];
-                                                               if (isSuccess) {
-                                                               if (resultBlock) {
-                                                               dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
-                                                               resultBlock(responseObject, nil);
-                                                               });
-                                                               }
-                                                               } else {
-                                                               NSInteger errorCode = [responseObject[@"code"] toInt];
-                                                               NSString *errorMessage = [responseObject[@"message"] toString];
-                                                               
-                                                               NSError *error = [NSError errorWithDomain:kBeauticianErrorDomain code:errorCode userInfo:@{NSLocalizedDescriptionKey : VALID_STRING(errorMessage)}];
-                                                               if (resultBlock) {
-                                                               dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                                                               resultBlock(nil, error);
-                                                               });
-                                                               }
-                                                               }
-                                                               */
-                                                          }
-                                      
-                                                          failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                                              NSLog(@"Request Failed:\n%@", error);
-                                                              NSLog(@"Request URL:\n%@", [task.originalRequest.URL absoluteString]);
-                                                              
-                                                              NSString *errorMessage = @"网络好像不太通畅，请稍候再试哦";
-#ifdef DEBUG
-                                                              errorMessage = [NSString stringWithFormat:@"%@\nHTTP状态码%ld, 错误码%ld", errorMessage, (long)(((NSHTTPURLResponse *)(task.response)).statusCode), (long)(error.code)];
-#endif
-                                                              
-                                                              error = [NSError errorWithDomain:kBeauticianErrorDomain code:error.code userInfo:@{NSLocalizedDescriptionKey : errorMessage}];
-                                                              
-                                                              if (resultBlock) {
-                                                                  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                                                                      resultBlock(nil, error);
-                                                                  });
-                                                              }
-                                                          }];
+//          NSLog(@"Request URL: %@", [task.originalRequest.URL absoluteString]);
+//          NSLog(@"Response Object:\n%@", responseObject);
+//          NSLog(@"Response Headers:\n%@", ((NSHTTPURLResponse *)(task.response)).allHeaderFields);
+          
+          //              if ([responseObject isKindOfClass:[NSDictionary class]] == NO) {
+          //                  responseObject = nil;
+          //              }
+          
+          if (resultBlock) {
+              dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
+                  resultBlock(responseObject, nil);
+              });
+          }
+          
+          /*
+           BOOL isSuccess = [responseObject[@"success"] toBool];
+           if (isSuccess) {
+           if (resultBlock) {
+           dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
+           resultBlock(responseObject, nil);
+           });
+           }
+           } else {
+           NSInteger errorCode = [responseObject[@"code"] toInt];
+           NSString *errorMessage = [responseObject[@"message"] toString];
+           
+           NSError *error = [NSError errorWithDomain:kBeauticianErrorDomain code:errorCode userInfo:@{NSLocalizedDescriptionKey : VALID_STRING(errorMessage)}];
+           if (resultBlock) {
+           dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+           resultBlock(nil, error);
+           });
+           }
+           }
+           */
+      }
+
+      failure:^(NSURLSessionDataTask *task, NSError *error) {
+          NSLog(@"Request Failed:\n%@", error);
+          NSLog(@"Request URL:\n%@", [task.originalRequest.URL absoluteString]);
+          
+          NSString *errorMessage = @"网络好像不太通畅，请稍候再试哦";
+    #ifdef DEBUG
+          errorMessage = [NSString stringWithFormat:@"%@\nHTTP状态码%ld, 错误码%ld", errorMessage, (long)(((NSHTTPURLResponse *)(task.response)).statusCode), (long)(error.code)];
+    #endif
+          
+          error = [NSError errorWithDomain:kBeauticianErrorDomain code:error.code userInfo:@{NSLocalizedDescriptionKey : errorMessage}];
+          
+          if (resultBlock) {
+              dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                  resultBlock(nil, error);
+              });
+          }
+      }];
     
     [dataTask resume];
     
