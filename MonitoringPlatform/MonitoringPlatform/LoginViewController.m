@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "HomeViewController.h"
 
 @interface LoginViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIView *backView;
@@ -14,6 +15,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *distanceTop;
 
+/** cameraID */
+@property (nonatomic,strong) NSString *cameraID;
+/** deviceID */
+@property (nonatomic,strong) NSString *deviceID;
 
 @end
 
@@ -76,7 +81,12 @@
     parame[@"password"] = self.passwordField.text;
     [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/LoginInformationController/loginInformation" params:parame resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
+            NSLog(@"loginInfo = %@",responseObject);
             if ([responseObject[@"msg"] isEqualToString:@"登录成功"]) {
+                if (responseObject[@"data"][@"mUserCameral"] != nil) {
+                    self.cameraID = responseObject[@"data"][@"mUserCameral"][@"cameraID"];
+                    self.deviceID = responseObject[@"data"][@"mUserCameral"][@"deviceID"];
+                }
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hideAnimated:YES];
                     [self performSegueWithIdentifier:@"pushHomeController" sender:nil];
@@ -104,14 +114,22 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    UIViewController *destination = segue.destinationViewController;
+    if ([destination respondsToSelector:@selector(setCameraID:)]) {
+        [destination setValue:self.cameraID forKey:@"cameraID"];
+    }
+    if ([destination respondsToSelector:@selector(setDeviceID:)]) {
+        [destination setValue:self.deviceID forKey:@"deviceID"];
+    }
+    
 }
-*/
+
 
 @end

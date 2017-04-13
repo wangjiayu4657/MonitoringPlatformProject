@@ -28,6 +28,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.userNameTextField.text = self.param[@"username"];
+    self.passwordTextField.text = self.param[@"password"];
+    
     //视图设置
     _userNameTextField.hidden = YES;
     _passwordTextField.hidden = YES;
@@ -44,28 +48,30 @@
 #pragma mark - Button Action
 - (IBAction)selectLineAction:(UIButton *)sender {
     //获取线路列表
-//    _lineList = [NSMutableArray array];
-//    VMSNetSDK *vmsNetSDK = [VMSNetSDK shareInstance];
-//    if (_serverAddressTextField.text.length <= 7) {
-//        _serverAddressTextField.text = @"http://111.40.20.65:82";
-//        //        _serverAddressTextField.text = @"http://10.33.27.240"; //内网测试环境
-//    }
-//    BOOL result = [vmsNetSDK getLineList:_serverAddressTextField.text toLineInfoList:_lineList]; //执行方法后，将把线路列表写入_lineList
-//    if (NO == result) {
-//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-//                                                            message:@"获取线路失败"
-//                                                           delegate:nil cancelButtonTitle:@"好"
-//                                                  otherButtonTitles:nil, nil];
-//        [alertView show];
-//        return;
-//    }
-//    [_serverAddressTextField resignFirstResponder];
-//    
-//    //让用户选择线路（或者程序中自动判断并选择最优线路)
-//    _linePickerView.hidden = NO;
-//    _confirmButton.hidden = NO;
-//    [_linePickerView reloadAllComponents];
-//    _selectedLineID = [_lineList[0] lineID];
+    _lineList = [NSMutableArray array];
+    VMSNetSDK *vmsNetSDK = [VMSNetSDK shareInstance];
+    if (_serverAddressTextField.text.length <= 7) {
+        if ([self.param[@"servaddr"] length] > 0) {
+            self.serverAddressTextField.text = self.param[@"servaddr"];
+        }
+        //        _serverAddressTextField.text = @"http://10.33.27.240"; //内网测试环境
+    }
+    BOOL result = [vmsNetSDK getLineList:_serverAddressTextField.text toLineInfoList:_lineList]; //执行方法后，将把线路列表写入_lineList
+    if (NO == result) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                            message:@"获取线路失败"
+                                                           delegate:nil cancelButtonTitle:@"好"
+                                                  otherButtonTitles:nil, nil];
+        [alertView show];
+        return;
+    }
+    [_serverAddressTextField resignFirstResponder];
+    
+    //让用户选择线路（或者程序中自动判断并选择最优线路)
+    _linePickerView.hidden = NO;
+    _confirmButton.hidden = NO;
+    [_linePickerView reloadAllComponents];
+    _selectedLineID = [_lineList[0] lineID];
     
 }
 

@@ -9,4 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ControlCenterViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>
+
+/** 数据 */
+@property (nonatomic,strong) NSDictionary *param;
+
 @end
