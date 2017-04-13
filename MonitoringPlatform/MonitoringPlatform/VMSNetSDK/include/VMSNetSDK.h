@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "VMSNetSDKDataType.h"
 
 @interface VMSNetSDK : NSObject
 {
@@ -39,7 +40,7 @@
 @property (readonly,nonatomic) NSString *strServerVerision;
 @property (nonatomic,copy)NSString *magVersion;
 @property (nonatomic, assign) BOOL isSupportMAG;
-@property (nonatomic,strong)CServInfo *magHttpServer;
+@property (nonatomic,strong) CServInfo *magHttpServer;
 /**
  *	@brief	获取VMSNetSDK单例
  *

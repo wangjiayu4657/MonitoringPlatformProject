@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MCRSDK.h"
+#import "VideoPlaySDK.h"
 
 @interface AppDelegate ()
 
@@ -19,7 +20,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-//    InitLib();
+    //初始化播放库
+    InitLib();
+    VP_InitSDK();
     
     return YES;
 }

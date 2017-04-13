@@ -17,8 +17,8 @@
 #import "MBProgressHUD.h"
 #import "MBProgressHUD+XMG.h"
 #import "HttpClient.h"
-
-
+//#import "VMSNetSDK.h"
+//#import "VMSNetSDKDataType.h"
 
 /****************************************************
  通用的宏和常量定义

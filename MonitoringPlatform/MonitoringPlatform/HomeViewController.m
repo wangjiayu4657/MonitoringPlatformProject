@@ -17,8 +17,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+}
+
+- (IBAction)requestButton:(id)sender {
     [self requestPreview];
-    
 }
 
 ///请求预览

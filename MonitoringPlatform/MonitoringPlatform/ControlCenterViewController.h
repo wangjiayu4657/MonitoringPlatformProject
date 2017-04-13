@@ -8,6 +8,5 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ControlCenterViewController : UIViewController
-
+@interface ControlCenterViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>
 @end

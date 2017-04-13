@@ -195,6 +195,9 @@
                                     <constraint firstAttribute="height" constant="100" id="nYO-xL-pgw"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="requestButton"/>
+                                <connections>
+                                    <action selector="requestButton:" destination="nkY-WW-vLC" eventType="touchUpInside" id="Fe1-kg-nnT"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2r-6G-0NB">
                                 <rect key="frame" x="280" y="624" width="80" height="18"/>
@@ -308,6 +311,7 @@
                     <navigationItem key="navigationItem" id="wi6-b7-XFy"/>
                     <connections>
                         <outlet property="confirmButton" destination="iIt-1D-ig4" id="7eY-LA-tRN"/>
+                        <outlet property="linePickerView" destination="mGK-Fa-ITM" id="T2C-Tu-VLE"/>
                         <outlet property="loginButton" destination="EOk-DA-i0q" id="xy4-yD-bEn"/>
                         <outlet property="passwordTextField" destination="KsT-bB-x63" id="kUo-5b-zVR"/>
                         <outlet property="serverAddressTextField" destination="bAf-n5-t5x" id="Py2-fD-d95"/>

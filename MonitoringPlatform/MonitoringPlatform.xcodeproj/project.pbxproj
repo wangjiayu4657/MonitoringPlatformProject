@@ -8,15 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		555C09F249D1EEDAE218330F /* Pods_MonitoringPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA483C96F71D5E977EDC7AB /* Pods_MonitoringPlatform.framework */; };
+		752E9BF51E9E75D700B5CD49 /* ResourceTreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 752E9BF41E9E75D700B5CD49 /* ResourceTreeViewController.m */; };
+		752E9BF71E9E814300B5CD49 /* libz.1.1.3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 752E9BF61E9E814300B5CD49 /* libz.1.1.3.tbd */; };
+		752E9BF91E9E828A00B5CD49 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 752E9BF81E9E828A00B5CD49 /* AFNetworking.framework */; };
 		75A484AC1E9DC8E3009A6C84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A484AB1E9DC8E3009A6C84 /* main.m */; };
-		75A484AF1E9DC8E3009A6C84 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A484AE1E9DC8E3009A6C84 /* AppDelegate.m */; };
+		75A484AF1E9DC8E3009A6C84 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75A484AE1E9DC8E3009A6C84 /* AppDelegate.mm */; };
 		75A484B51E9DC8E3009A6C84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75A484B31E9DC8E3009A6C84 /* Main.storyboard */; };
 		75A484B71E9DC8E4009A6C84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75A484B61E9DC8E4009A6C84 /* Assets.xcassets */; };
 		75A484BA1E9DC8E4009A6C84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75A484B81E9DC8E4009A6C84 /* LaunchScreen.storyboard */; };
 		75A484C51E9DC8E4009A6C84 /* MonitoringPlatformTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A484C41E9DC8E4009A6C84 /* MonitoringPlatformTests.m */; };
 		75A484D01E9DC8E4009A6C84 /* MonitoringPlatformUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A484CF1E9DC8E4009A6C84 /* MonitoringPlatformUITests.m */; };
 		75A484E31E9DC901009A6C84 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A484DD1E9DC901009A6C84 /* LoginViewController.m */; };
-		75A484E41E9DC901009A6C84 /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A484DF1E9DC901009A6C84 /* PlayViewController.m */; };
+		75A484E41E9DC901009A6C84 /* PlayViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75A484DF1E9DC901009A6C84 /* PlayViewController.mm */; };
 		75A484E51E9DC901009A6C84 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A484E11E9DC901009A6C84 /* HomeViewController.m */; };
 		75A484EE1E9DD5BA009A6C84 /* MBProgressHUD+XMG.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A484ED1E9DD5BA009A6C84 /* MBProgressHUD+XMG.m */; };
 		75A484F31E9E0AFB009A6C84 /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A484F21E9E0AFB009A6C84 /* HttpClient.m */; };
@@ -41,9 +44,7 @@
 		75A485371E9E1045009A6C84 /* libXCUtilityStatic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75A4852F1E9E1045009A6C84 /* libXCUtilityStatic.a */; };
 		75A485391E9E10A5009A6C84 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75A485381E9E10A5009A6C84 /* MobileCoreServices.framework */; };
 		75A4853B1E9E10AE009A6C84 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75A4853A1E9E10AE009A6C84 /* SystemConfiguration.framework */; };
-		75A4853D1E9E10BA009A6C84 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75A4853C1E9E10BA009A6C84 /* CFNetwork.framework */; };
 		75A4853F1E9E10C8009A6C84 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75A4853E1E9E10C8009A6C84 /* CoreGraphics.framework */; };
-		75A485411E9E10D2009A6C84 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 75A485401E9E10D2009A6C84 /* libz.1.2.5.tbd */; };
 		75A485431E9E10DE009A6C84 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 75A485421E9E10DE009A6C84 /* libxml2.tbd */; };
 		75A485451E9E10FC009A6C84 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 75A485441E9E10FC009A6C84 /* libsqlite3.tbd */; };
 		75A485471E9E110A009A6C84 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 75A485461E9E110A009A6C84 /* libc++.tbd */; };
@@ -78,10 +79,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		752E9BF31E9E75D700B5CD49 /* ResourceTreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceTreeViewController.h; sourceTree = "<group>"; };
+		752E9BF41E9E75D700B5CD49 /* ResourceTreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceTreeViewController.m; sourceTree = "<group>"; };
+		752E9BF61E9E814300B5CD49 /* libz.1.1.3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.1.3.tbd; path = usr/lib/libz.1.1.3.tbd; sourceTree = SDKROOT; };
+		752E9BF81E9E828A00B5CD49 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = "../../Library/Developer/Xcode/DerivedData/MonitoringPlatform-dqvotvstviwwuwbqntdmcplgrimt/Build/Products/Debug-iphoneos/AFNetworking/AFNetworking.framework"; sourceTree = "<group>"; };
 		75A484A71E9DC8E3009A6C84 /* MonitoringPlatform.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonitoringPlatform.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A484AB1E9DC8E3009A6C84 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		75A484AD1E9DC8E3009A6C84 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		75A484AE1E9DC8E3009A6C84 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		75A484AE1E9DC8E3009A6C84 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		75A484B41E9DC8E3009A6C84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		75A484B61E9DC8E4009A6C84 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75A484B91E9DC8E4009A6C84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -94,7 +99,7 @@
 		75A484D11E9DC8E4009A6C84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75A484DD1E9DC901009A6C84 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		75A484DE1E9DC901009A6C84 /* PlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayViewController.h; sourceTree = "<group>"; };
-		75A484DF1E9DC901009A6C84 /* PlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayViewController.m; sourceTree = "<group>"; };
+		75A484DF1E9DC901009A6C84 /* PlayViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayViewController.mm; sourceTree = "<group>"; };
 		75A484E01E9DC901009A6C84 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		75A484E11E9DC901009A6C84 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		75A484E21E9DC901009A6C84 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -173,6 +178,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				752E9BF91E9E828A00B5CD49 /* AFNetworking.framework in Frameworks */,
+				752E9BF71E9E814300B5CD49 /* libz.1.1.3.tbd in Frameworks */,
 				75A4855B1E9E1181009A6C84 /* CoreMedia.framework in Frameworks */,
 				75A485591E9E1173009A6C84 /* GLKit.framework in Frameworks */,
 				75A485571E9E1168009A6C84 /* VideoToolbox.framework in Frameworks */,
@@ -186,9 +193,7 @@
 				75A485471E9E110A009A6C84 /* libc++.tbd in Frameworks */,
 				75A485451E9E10FC009A6C84 /* libsqlite3.tbd in Frameworks */,
 				75A485431E9E10DE009A6C84 /* libxml2.tbd in Frameworks */,
-				75A485411E9E10D2009A6C84 /* libz.1.2.5.tbd in Frameworks */,
 				75A4853F1E9E10C8009A6C84 /* CoreGraphics.framework in Frameworks */,
-				75A4853D1E9E10BA009A6C84 /* CFNetwork.framework in Frameworks */,
 				75A4853B1E9E10AE009A6C84 /* SystemConfiguration.framework in Frameworks */,
 				75A485391E9E10A5009A6C84 /* MobileCoreServices.framework in Frameworks */,
 				75A485321E9E1045009A6C84 /* libcrpto.a in Frameworks */,
@@ -261,15 +266,17 @@
 				75A484F11E9E0AFB009A6C84 /* HttpClient.h */,
 				75A484F21E9E0AFB009A6C84 /* HttpClient.m */,
 				75A484AD1E9DC8E3009A6C84 /* AppDelegate.h */,
-				75A484AE1E9DC8E3009A6C84 /* AppDelegate.m */,
+				75A484AE1E9DC8E3009A6C84 /* AppDelegate.mm */,
 				75A484E01E9DC901009A6C84 /* HomeViewController.h */,
 				75A484E11E9DC901009A6C84 /* HomeViewController.m */,
 				75A484E21E9DC901009A6C84 /* LoginViewController.h */,
 				75A484DD1E9DC901009A6C84 /* LoginViewController.m */,
 				75A4855C1E9E36E7009A6C84 /* ControlCenterViewController.h */,
 				75A4855D1E9E36E7009A6C84 /* ControlCenterViewController.m */,
+				752E9BF31E9E75D700B5CD49 /* ResourceTreeViewController.h */,
+				752E9BF41E9E75D700B5CD49 /* ResourceTreeViewController.m */,
 				75A484DE1E9DC901009A6C84 /* PlayViewController.h */,
-				75A484DF1E9DC901009A6C84 /* PlayViewController.m */,
+				75A484DF1E9DC901009A6C84 /* PlayViewController.mm */,
 				75A484B31E9DC8E3009A6C84 /* Main.storyboard */,
 				75A484B61E9DC8E4009A6C84 /* Assets.xcassets */,
 				75A484B81E9DC8E4009A6C84 /* LaunchScreen.storyboard */,
@@ -411,6 +418,8 @@
 		DFB51B72B25BB3D5C5EA504E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				752E9BF81E9E828A00B5CD49 /* AFNetworking.framework */,
+				752E9BF61E9E814300B5CD49 /* libz.1.1.3.tbd */,
 				75A4855A1E9E1181009A6C84 /* CoreMedia.framework */,
 				75A485581E9E1173009A6C84 /* GLKit.framework */,
 				75A485561E9E1168009A6C84 /* VideoToolbox.framework */,
@@ -628,9 +637,10 @@
 				75A485101E9E0BAC009A6C84 /* NSURL+Param.m in Sources */,
 				75A485141E9E0BAC009A6C84 /* UITextView+Placeholder.m in Sources */,
 				75A4850B1E9E0BAC009A6C84 /* NSData+Encoding.m in Sources */,
-				75A484AF1E9DC8E3009A6C84 /* AppDelegate.m in Sources */,
-				75A484E41E9DC901009A6C84 /* PlayViewController.m in Sources */,
+				75A484AF1E9DC8E3009A6C84 /* AppDelegate.mm in Sources */,
+				75A484E41E9DC901009A6C84 /* PlayViewController.mm in Sources */,
 				75A485131E9E0BAC009A6C84 /* UIImageView+Additions.m in Sources */,
+				752E9BF51E9E75D700B5CD49 /* ResourceTreeViewController.m in Sources */,
 				75A485151E9E0BAC009A6C84 /* UIView+BorderLine.m in Sources */,
 				75A4850D1E9E0BAC009A6C84 /* NSObject+Additions.m in Sources */,
 				75A484AC1E9DC8E3009A6C84 /* main.m in Sources */,
@@ -781,6 +791,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -790,18 +801,20 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 811364BD3C4E43455606F8E1 /* Pods-MonitoringPlatform.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9E42MM3WGC;
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MonitoringPlatform/PrefixHeader.pch";
 				INFOPLIST_FILE = MonitoringPlatform/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/MonitoringPlatform/VideoPlaySDK/lib",
 					"$(PROJECT_DIR)/MonitoringPlatform/VMSNetSDK/lib",
+					"$(PROJECT_DIR)/MonitoringPlatform/VideoPlaySDK/lib",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-framework",
@@ -810,6 +823,7 @@
 					"\"MBProgressHUD\"",
 					"-framework",
 					"\"ReactiveObjC\"",
+					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xinju.testProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -822,19 +836,21 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8DAAFE01936F4455F838601F /* Pods-MonitoringPlatform.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 9E42MM3WGC;
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MonitoringPlatform/PrefixHeader.pch";
 				INFOPLIST_FILE = MonitoringPlatform/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/MonitoringPlatform/VideoPlaySDK/lib",
 					"$(PROJECT_DIR)/MonitoringPlatform/VMSNetSDK/lib",
+					"$(PROJECT_DIR)/MonitoringPlatform/VideoPlaySDK/lib",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-framework",
@@ -843,6 +859,7 @@
 					"\"MBProgressHUD\"",
 					"-framework",
 					"\"ReactiveObjC\"",
+					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xinju.testProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
