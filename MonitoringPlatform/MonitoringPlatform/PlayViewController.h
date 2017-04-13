@@ -1,9 +1,9 @@
 //
 //  PlayViewController.h
-//  TestSDK
+//  Demo-SDK3.0
 //
-//  Created by wangjiayu on 2017/4/12.
-//  Copyright © 2017年 wangjiayu. All rights reserved.
+//  Created by HuYafeng on 15/9/1.
+//  Copyright (c) 2015年 sunda. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

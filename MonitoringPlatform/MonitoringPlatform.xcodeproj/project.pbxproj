@@ -11,6 +11,8 @@
 		752E9BF51E9E75D700B5CD49 /* ResourceTreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 752E9BF41E9E75D700B5CD49 /* ResourceTreeViewController.m */; };
 		752E9BF71E9E814300B5CD49 /* libz.1.1.3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 752E9BF61E9E814300B5CD49 /* libz.1.1.3.tbd */; };
 		752E9BF91E9E828A00B5CD49 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 752E9BF81E9E828A00B5CD49 /* AFNetworking.framework */; };
+		752E9C091E9F222400B5CD49 /* PlayViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 752E9C071E9F222400B5CD49 /* PlayViewController.mm */; };
+		752E9C0A1E9F222400B5CD49 /* PlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 752E9C081E9F222400B5CD49 /* PlayViewController.xib */; };
 		75A484AC1E9DC8E3009A6C84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A484AB1E9DC8E3009A6C84 /* main.m */; };
 		75A484AF1E9DC8E3009A6C84 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75A484AE1E9DC8E3009A6C84 /* AppDelegate.mm */; };
 		75A484B51E9DC8E3009A6C84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75A484B31E9DC8E3009A6C84 /* Main.storyboard */; };
@@ -19,7 +21,6 @@
 		75A484C51E9DC8E4009A6C84 /* MonitoringPlatformTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A484C41E9DC8E4009A6C84 /* MonitoringPlatformTests.m */; };
 		75A484D01E9DC8E4009A6C84 /* MonitoringPlatformUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A484CF1E9DC8E4009A6C84 /* MonitoringPlatformUITests.m */; };
 		75A484E31E9DC901009A6C84 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A484DD1E9DC901009A6C84 /* LoginViewController.m */; };
-		75A484E41E9DC901009A6C84 /* PlayViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75A484DF1E9DC901009A6C84 /* PlayViewController.mm */; };
 		75A484E51E9DC901009A6C84 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A484E11E9DC901009A6C84 /* HomeViewController.m */; };
 		75A484EE1E9DD5BA009A6C84 /* MBProgressHUD+XMG.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A484ED1E9DD5BA009A6C84 /* MBProgressHUD+XMG.m */; };
 		75A484F31E9E0AFB009A6C84 /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A484F21E9E0AFB009A6C84 /* HttpClient.m */; };
@@ -83,6 +84,9 @@
 		752E9BF41E9E75D700B5CD49 /* ResourceTreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceTreeViewController.m; sourceTree = "<group>"; };
 		752E9BF61E9E814300B5CD49 /* libz.1.1.3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.1.3.tbd; path = usr/lib/libz.1.1.3.tbd; sourceTree = SDKROOT; };
 		752E9BF81E9E828A00B5CD49 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = "../../Library/Developer/Xcode/DerivedData/MonitoringPlatform-dqvotvstviwwuwbqntdmcplgrimt/Build/Products/Debug-iphoneos/AFNetworking/AFNetworking.framework"; sourceTree = "<group>"; };
+		752E9C061E9F222400B5CD49 /* PlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayViewController.h; sourceTree = "<group>"; };
+		752E9C071E9F222400B5CD49 /* PlayViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayViewController.mm; sourceTree = "<group>"; };
+		752E9C081E9F222400B5CD49 /* PlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayViewController.xib; sourceTree = "<group>"; };
 		75A484A71E9DC8E3009A6C84 /* MonitoringPlatform.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonitoringPlatform.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A484AB1E9DC8E3009A6C84 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		75A484AD1E9DC8E3009A6C84 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -98,8 +102,6 @@
 		75A484CF1E9DC8E4009A6C84 /* MonitoringPlatformUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonitoringPlatformUITests.m; sourceTree = "<group>"; };
 		75A484D11E9DC8E4009A6C84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75A484DD1E9DC901009A6C84 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		75A484DE1E9DC901009A6C84 /* PlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayViewController.h; sourceTree = "<group>"; };
-		75A484DF1E9DC901009A6C84 /* PlayViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayViewController.mm; sourceTree = "<group>"; };
 		75A484E01E9DC901009A6C84 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		75A484E11E9DC901009A6C84 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		75A484E21E9DC901009A6C84 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -275,8 +277,9 @@
 				75A4855D1E9E36E7009A6C84 /* ControlCenterViewController.m */,
 				752E9BF31E9E75D700B5CD49 /* ResourceTreeViewController.h */,
 				752E9BF41E9E75D700B5CD49 /* ResourceTreeViewController.m */,
-				75A484DE1E9DC901009A6C84 /* PlayViewController.h */,
-				75A484DF1E9DC901009A6C84 /* PlayViewController.mm */,
+				752E9C061E9F222400B5CD49 /* PlayViewController.h */,
+				752E9C071E9F222400B5CD49 /* PlayViewController.mm */,
+				752E9C081E9F222400B5CD49 /* PlayViewController.xib */,
 				75A484B31E9DC8E3009A6C84 /* Main.storyboard */,
 				75A484B61E9DC8E4009A6C84 /* Assets.xcassets */,
 				75A484B81E9DC8E4009A6C84 /* LaunchScreen.storyboard */,
@@ -555,6 +558,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				752E9C0A1E9F222400B5CD49 /* PlayViewController.xib in Resources */,
 				75A484BA1E9DC8E4009A6C84 /* LaunchScreen.storyboard in Resources */,
 				75A484B71E9DC8E4009A6C84 /* Assets.xcassets in Resources */,
 				75A484B51E9DC8E3009A6C84 /* Main.storyboard in Resources */,
@@ -638,9 +642,9 @@
 				75A485141E9E0BAC009A6C84 /* UITextView+Placeholder.m in Sources */,
 				75A4850B1E9E0BAC009A6C84 /* NSData+Encoding.m in Sources */,
 				75A484AF1E9DC8E3009A6C84 /* AppDelegate.mm in Sources */,
-				75A484E41E9DC901009A6C84 /* PlayViewController.mm in Sources */,
 				75A485131E9E0BAC009A6C84 /* UIImageView+Additions.m in Sources */,
 				752E9BF51E9E75D700B5CD49 /* ResourceTreeViewController.m in Sources */,
+				752E9C091E9F222400B5CD49 /* PlayViewController.mm in Sources */,
 				75A485151E9E0BAC009A6C84 /* UIView+BorderLine.m in Sources */,
 				75A4850D1E9E0BAC009A6C84 /* NSObject+Additions.m in Sources */,
 				75A484AC1E9DC8E3009A6C84 /* main.m in Sources */,

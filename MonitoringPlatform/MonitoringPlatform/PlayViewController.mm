@@ -47,7 +47,7 @@ void StatusCallBack(PLAY_STATE playState, VP_HANDLE hLogin, void *pHandl)
 
 #pragma mark - Preview
 - (IBAction)playAction:(UIButton *)sender {
-    
+
     //获取播放地址
     VMSNetSDK *vmsNetSDK = [VMSNetSDK shareInstance];
     _realPlayURL = [[CRealPlayURL alloc] init];
@@ -68,9 +68,9 @@ void StatusCallBack(PLAY_STATE playState, VP_HANDLE hLogin, void *pHandl)
     VideoPlayInfo *videoInfo = [[VideoPlayInfo alloc] init];
     CDeviceInfo *deviceInfo = [[CDeviceInfo alloc] init];
     result = [vmsNetSDK getDeviceInfo:_serverAddress
-                          toSessionID:_mspInfo.sessionID
-                           toDeviceID:_cameraInfo.deviceID
-                         toDeviceInfo:deviceInfo];
+                               toSessionID:_mspInfo.sessionID
+                                toDeviceID:_cameraInfo.deviceID
+                              toDeviceInfo:deviceInfo];
     
     // 设备的用户名和密码, 需要调用VMSNetSDK中的接口 getDeviceInfo 获得的CDeviceInfo中属性：userName和password获取。
     if(result)
@@ -242,7 +242,7 @@ void StatusCallBack(PLAY_STATE playState, VP_HANDLE hLogin, void *pHandl)
             return NO;
         }
     }
-    return YES;
+        return YES;
 }
 
 //暂停回放
