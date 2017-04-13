@@ -19,6 +19,8 @@
 @property (nonatomic,strong) NSString *cameraID;
 /** deviceID */
 @property (nonatomic,strong) NSString *deviceID;
+/** uid */
+@property (nonatomic,strong) NSNumber *uid;
 
 @end
 
@@ -71,6 +73,10 @@
 
 - (IBAction)loginButton:(UIButton *)sender {
     
+    [self login];
+}
+
+- (void) login {
     [self validation];
     MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
     hud.label.text = @"正在加载中...";
@@ -84,8 +90,7 @@
             NSLog(@"loginInfo = %@",responseObject);
             if ([responseObject[@"msg"] isEqualToString:@"登录成功"]) {
                 if (responseObject[@"data"][@"mUserCameral"] != nil) {
-                    self.cameraID = responseObject[@"data"][@"mUserCameral"][@"cameraID"];
-                    self.deviceID = responseObject[@"data"][@"mUserCameral"][@"deviceID"];
+                    [self saveUserInformation:responseObject[@"data"]];
                 }
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hideAnimated:YES];
@@ -99,6 +104,25 @@
         }
     }];
 }
+
+///保存信息
+- (void) saveUserInformation:(NSDictionary *)dict {
+    self.cameraID = dict[@"mUserCameral"][@"cameraID"];
+    self.deviceID = dict[@"mUserCameral"][@"deviceID"];
+    self.uid = dict[@"uid"];
+    
+    if (self.cameraID.length > 0) {
+        [[NSUserDefaults standardUserDefaults] setObject:self.cameraID forKey:@"cameraID"];
+    }
+    if (self.deviceID.length > 0) {
+        [[NSUserDefaults standardUserDefaults] setObject:self.deviceID forKey:@"deviceID"];
+    }
+    if ([self.uid stringValue].length > 0) {
+        [[NSUserDefaults standardUserDefaults] setObject:self.uid forKey:@"uid"];
+    }
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
@@ -121,14 +145,20 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    UIViewController *destination = segue.destinationViewController;
+    NSLog(@"---%@",self.cameraID);
+    HomeViewController *destination = segue.destinationViewController;
+//    destination.cameraID = self.cameraID;
+//    destination.deviceID = self.deviceID;
+//    destination.uid = self.uid;
     if ([destination respondsToSelector:@selector(setCameraID:)]) {
         [destination setValue:self.cameraID forKey:@"cameraID"];
     }
     if ([destination respondsToSelector:@selector(setDeviceID:)]) {
         [destination setValue:self.deviceID forKey:@"deviceID"];
     }
-    
+    if ([destination respondsToSelector:@selector(setUid:)]) {
+        [destination setValue:self.uid forKey:@"uid"];
+    }
 }
 
 

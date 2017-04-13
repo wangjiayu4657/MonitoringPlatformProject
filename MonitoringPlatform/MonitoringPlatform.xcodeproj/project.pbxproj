@@ -13,6 +13,10 @@
 		752E9BF91E9E828A00B5CD49 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 752E9BF81E9E828A00B5CD49 /* AFNetworking.framework */; };
 		752E9C091E9F222400B5CD49 /* PlayViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 752E9C071E9F222400B5CD49 /* PlayViewController.mm */; };
 		752E9C0A1E9F222400B5CD49 /* PlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 752E9C081E9F222400B5CD49 /* PlayViewController.xib */; };
+		752E9C101E9F510900B5CD49 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 752E9C0F1E9F510900B5CD49 /* User.m */; };
+		752E9C151E9F629300B5CD49 /* XTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 752E9C141E9F629300B5CD49 /* XTimer.m */; };
+		752E9C181E9F6A8B00B5CD49 /* MaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 752E9C171E9F6A8B00B5CD49 /* MaskView.m */; };
+		752E9C1A1E9F6A9A00B5CD49 /* MaskView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 752E9C191E9F6A9A00B5CD49 /* MaskView.xib */; };
 		75A484AC1E9DC8E3009A6C84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A484AB1E9DC8E3009A6C84 /* main.m */; };
 		75A484AF1E9DC8E3009A6C84 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75A484AE1E9DC8E3009A6C84 /* AppDelegate.mm */; };
 		75A484B51E9DC8E3009A6C84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75A484B31E9DC8E3009A6C84 /* Main.storyboard */; };
@@ -87,6 +91,13 @@
 		752E9C061E9F222400B5CD49 /* PlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayViewController.h; sourceTree = "<group>"; };
 		752E9C071E9F222400B5CD49 /* PlayViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayViewController.mm; sourceTree = "<group>"; };
 		752E9C081E9F222400B5CD49 /* PlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayViewController.xib; sourceTree = "<group>"; };
+		752E9C0E1E9F510900B5CD49 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		752E9C0F1E9F510900B5CD49 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		752E9C131E9F629300B5CD49 /* XTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTimer.h; sourceTree = "<group>"; };
+		752E9C141E9F629300B5CD49 /* XTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTimer.m; sourceTree = "<group>"; };
+		752E9C161E9F6A8B00B5CD49 /* MaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaskView.h; sourceTree = "<group>"; };
+		752E9C171E9F6A8B00B5CD49 /* MaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaskView.m; sourceTree = "<group>"; };
+		752E9C191E9F6A9A00B5CD49 /* MaskView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaskView.xib; sourceTree = "<group>"; };
 		75A484A71E9DC8E3009A6C84 /* MonitoringPlatform.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonitoringPlatform.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A484AB1E9DC8E3009A6C84 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		75A484AD1E9DC8E3009A6C84 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -236,6 +247,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		752E9C121E9F629300B5CD49 /* XTimer */ = {
+			isa = PBXGroup;
+			children = (
+				752E9C131E9F629300B5CD49 /* XTimer.h */,
+				752E9C141E9F629300B5CD49 /* XTimer.m */,
+			);
+			path = XTimer;
+			sourceTree = "<group>";
+		};
 		75A4849E1E9DC8E3009A6C84 = {
 			isa = PBXGroup;
 			children = (
@@ -261,6 +281,7 @@
 		75A484A91E9DC8E3009A6C84 /* MonitoringPlatform */ = {
 			isa = PBXGroup;
 			children = (
+				752E9C121E9F629300B5CD49 /* XTimer */,
 				75A485171E9E1045009A6C84 /* MCRSDK */,
 				75A4851B1E9E1045009A6C84 /* VideoPlaySDK */,
 				75A485241E9E1045009A6C84 /* VMSNetSDK */,
@@ -279,6 +300,11 @@
 				752E9BF41E9E75D700B5CD49 /* ResourceTreeViewController.m */,
 				752E9C061E9F222400B5CD49 /* PlayViewController.h */,
 				752E9C071E9F222400B5CD49 /* PlayViewController.mm */,
+				752E9C161E9F6A8B00B5CD49 /* MaskView.h */,
+				752E9C171E9F6A8B00B5CD49 /* MaskView.m */,
+				752E9C191E9F6A9A00B5CD49 /* MaskView.xib */,
+				752E9C0E1E9F510900B5CD49 /* User.h */,
+				752E9C0F1E9F510900B5CD49 /* User.m */,
 				752E9C081E9F222400B5CD49 /* PlayViewController.xib */,
 				75A484B31E9DC8E3009A6C84 /* Main.storyboard */,
 				75A484B61E9DC8E4009A6C84 /* Assets.xcassets */,
@@ -559,6 +585,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				752E9C0A1E9F222400B5CD49 /* PlayViewController.xib in Resources */,
+				752E9C1A1E9F6A9A00B5CD49 /* MaskView.xib in Resources */,
 				75A484BA1E9DC8E4009A6C84 /* LaunchScreen.storyboard in Resources */,
 				75A484B71E9DC8E4009A6C84 /* Assets.xcassets in Resources */,
 				75A484B51E9DC8E3009A6C84 /* Main.storyboard in Resources */,
@@ -642,6 +669,8 @@
 				75A485141E9E0BAC009A6C84 /* UITextView+Placeholder.m in Sources */,
 				75A4850B1E9E0BAC009A6C84 /* NSData+Encoding.m in Sources */,
 				75A484AF1E9DC8E3009A6C84 /* AppDelegate.mm in Sources */,
+				752E9C151E9F629300B5CD49 /* XTimer.m in Sources */,
+				752E9C101E9F510900B5CD49 /* User.m in Sources */,
 				75A485131E9E0BAC009A6C84 /* UIImageView+Additions.m in Sources */,
 				752E9BF51E9E75D700B5CD49 /* ResourceTreeViewController.m in Sources */,
 				752E9C091E9F222400B5CD49 /* PlayViewController.mm in Sources */,
@@ -654,6 +683,7 @@
 				75A485111E9E0BAC009A6C84 /* UIColor+Hex.m in Sources */,
 				75A484F31E9E0AFB009A6C84 /* HttpClient.m in Sources */,
 				75A484E51E9DC901009A6C84 /* HomeViewController.m in Sources */,
+				752E9C181E9F6A8B00B5CD49 /* MaskView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

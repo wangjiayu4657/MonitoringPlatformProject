@@ -13,6 +13,8 @@
 @property (nonatomic,strong) NSString *cameraID;
 /** deviceID */
 @property (nonatomic,strong) NSString *deviceID;
+/** userId */
+@property (nonatomic,strong) NSNumber *uid;
 
 @end
 
