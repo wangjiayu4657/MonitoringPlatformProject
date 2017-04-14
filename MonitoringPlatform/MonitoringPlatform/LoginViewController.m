@@ -29,6 +29,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"userName"];
+    NSString *password = [[NSUserDefaults standardUserDefaults] objectForKey:@"password"];
+    NSLog(@"username = %@  password = %@",username,password);
+    if (username.length > 0 && password.length > 0) {
+        [self performSegueWithIdentifier:@"pushHomeController" sender:nil];
+    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -38,12 +45,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
- 
-//    NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"userName"];
-//    NSString *password = [[NSUserDefaults standardUserDefaults] objectForKey:@"password"];
-//    if (username.length > 0 && password.length > 0) {
-//        [self performSegueWithIdentifier:@"pushHomeController" sender:nil];
-//    }
+    
 }
 
 - (void)keyBoardWillShow:(NSNotification *)notify {
@@ -117,24 +119,24 @@
     self.cameraID = dict[@"mUserCameral"][@"cameraID"];
     self.deviceID = dict[@"mUserCameral"][@"deviceID"];
     self.uid = dict[@"uid"];
-    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (self.cameraID.length > 0) {
-        [[NSUserDefaults standardUserDefaults] setObject:self.cameraID forKey:@"cameraID"];
+        [defaults setObject:self.cameraID forKey:@"cameraID"];
     }
     if (self.deviceID.length > 0) {
-        [[NSUserDefaults standardUserDefaults] setObject:self.deviceID forKey:@"deviceID"];
+        [defaults setObject:self.deviceID forKey:@"deviceID"];
     }
     if ([self.uid stringValue].length > 0) {
-        [[NSUserDefaults standardUserDefaults] setObject:self.uid forKey:@"uid"];
+        [defaults setObject:self.uid forKey:@"uid"];
     }
     if (self.accountField.text.length > 0) {
-        [[NSUserDefaults standardUserDefaults] setObject:self.accountField.text forKey:@"userName"];
+        [defaults setObject:self.accountField.text forKey:@"userName"];
     }
     if (self.passwordField.text.length > 0) {
-        [[NSUserDefaults standardUserDefaults] setObject:self.passwordField.text forKey:@"password"];
+        [defaults setObject:self.passwordField.text forKey:@"password"];
     }
     
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [defaults synchronize];
 }
 
 

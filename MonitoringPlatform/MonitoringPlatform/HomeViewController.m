@@ -13,6 +13,7 @@
 #import "NSData+ImageContentType.h"
 #import "UIImage+GIF.h"
 #import "User.h"
+#import "YLGIFImage.h"
 @interface HomeViewController ()
 
 /** 请求数据 */
@@ -34,24 +35,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    NSLog(@"camera:%@",self.cameraID);
-//    NSLog(@"uid:%@",self.uid);
+
     [self getUserInformation];
-    
-//    NSLog(@"%@",user.uid);
     
     self.cameraID = [[NSUserDefaults standardUserDefaults] objectForKey:@"cameraID"];
     self.uid = [[NSUserDefaults standardUserDefaults] objectForKey:@"uid"];
     self.deviceID = [[NSUserDefaults standardUserDefaults] objectForKey:@"deviceID"];
-    NSLog(@"cameraID ==== %@",self.cameraID);
-    NSLog(@"uid ==== %@",self.uid);
-    NSLog(@"deviceID ==== %@",self.deviceID);
-    
-    NSString *filePath = [[NSBundle bundleWithPath:[[NSBundle mainBundle] bundlePath]] pathForResource:@"request" ofType:@"gif"];
-    NSData  *imageData = [NSData dataWithContentsOfFile:filePath];
+//    NSLog(@"cameraID ==== %@",self.cameraID);
+//    NSLog(@"uid ==== %@",self.uid);
+//    NSLog(@"deviceID ==== %@",self.deviceID);
     self.requestBtn.imageView.backgroundColor = [UIColor clearColor];
-//    [self.requestBtn setBackgroundImage:[UIImage sd_animatedGIFWithData:imageData] forState:UIControlStateNormal];
-    [self.requestBtn setImage:[UIImage sd_animatedGIFWithData:imageData] forState:UIControlStateNormal];
+    [self.requestBtn setImage:[YLGIFImage imageNamed:@"request.gif"] forState:UIControlStateNormal];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.timer1 invalidate];
+    self.timer1 = nil;
+    [self.timer2 invalidate];
+    self.timer2 = nil;
 }
 
 - (IBAction)requestButton:(UIButton *)sender {
@@ -75,21 +77,25 @@
 
 - (IBAction)logoutButton:(id)sender {
     MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
-    hud.label.text = @"正在加载中...";
+    hud.label.text = @"正在退出中...";
     hud.mode = MBProgressHUDModeText;
     [hud showAnimated:YES];
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithCapacity:2];
     param[@"cameralId"] = self.cameraID;
     param[@"userId"] = self.uid;
-    [[HttpClient sharedClient] postPath:@"http://192.168.0.108:8081/giscoop/PreviewController/remove http/1.1" params:param resultBlock:^(id responseObject, NSError *error) {
+    [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/PreviewController/remove" params:param resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
             [self cleanDisk];
+            NSLog(@"退出:%@",responseObject);
             if ([responseObject[@"msg"] isEqualToString:@"成功"]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
+//                    [MBProgressHUD showSuccess:@"退出成功"];
                     [hud hideAnimated:YES];
+                    [self.navigationController popViewControllerAnimated:YES];
                 });
             }
         }else {
+            [hud removeFromSuperViewOnHide];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [MBProgressHUD showError:[NSString stringWithFormat:@"%@",error]];
             });
@@ -106,7 +112,7 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:2];
     dict[@"cameralId"] = self.cameraID;
     dict[@"userId"] = [self.uid stringValue];
-    NSLog(@"dict === %@",dict);
+//    NSLog(@"dict === %@",dict);
     [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/PreviewController/preview" params:dict resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
             NSLog(@"预览:%@",responseObject);

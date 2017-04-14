@@ -189,12 +189,11 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6md-6H-7Ea">
-                                <rect key="frame" x="138" y="398" width="100" height="100"/>
+                                <rect key="frame" x="128" y="400" width="120" height="120"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="Hrm-Pq-4Sl"/>
-                                    <constraint firstAttribute="height" constant="100" id="nYO-xL-pgw"/>
+                                    <constraint firstAttribute="width" constant="120" id="Hrm-Pq-4Sl"/>
+                                    <constraint firstAttribute="height" constant="120" id="nYO-xL-pgw"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="requestButton"/>
                                 <connections>
                                     <action selector="requestButton:" destination="nkY-WW-vLC" eventType="touchUpInside" id="Fe1-kg-nnT"/>
                                 </connections>
@@ -220,7 +219,7 @@
                             <constraint firstItem="6md-6H-7Ea" firstAttribute="centerX" secondItem="WIt-tK-Wdw" secondAttribute="centerX" id="4vl-JT-7QA"/>
                             <constraint firstItem="ORs-vI-0f5" firstAttribute="leading" secondItem="WIt-tK-Wdw" secondAttribute="leading" id="FeH-Nt-tHD"/>
                             <constraint firstAttribute="trailing" secondItem="ORs-vI-0f5" secondAttribute="trailing" id="Hcm-9A-R63"/>
-                            <constraint firstItem="Jjy-jt-waY" firstAttribute="top" secondItem="6md-6H-7Ea" secondAttribute="bottom" constant="169" id="Ppg-8r-Vqi"/>
+                            <constraint firstItem="Jjy-jt-waY" firstAttribute="top" secondItem="6md-6H-7Ea" secondAttribute="bottom" constant="147" id="Ppg-8r-Vqi"/>
                             <constraint firstItem="Jjy-jt-waY" firstAttribute="top" secondItem="ORs-vI-0f5" secondAttribute="bottom" id="aG9-2E-xVR"/>
                             <constraint firstItem="ORs-vI-0f5" firstAttribute="top" secondItem="cs0-0z-2bO" secondAttribute="bottom" id="fXe-IH-rgP"/>
                             <constraint firstItem="Jjy-jt-waY" firstAttribute="top" secondItem="S2r-6G-0NB" secondAttribute="bottom" constant="25" id="fbK-ua-Bvx"/>
@@ -375,6 +374,5 @@
         <image name="logout" width="12" height="15"/>
         <image name="password" width="42" height="54"/>
         <image name="preview" width="540" height="960"/>
-        <image name="requestButton" width="284" height="284"/>
     </resources>
 </document>

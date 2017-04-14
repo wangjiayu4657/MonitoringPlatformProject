@@ -6,6 +6,7 @@ target "MonitoringPlatform" do
     pod "MBProgressHUD"
     pod "SDWebImage"
     pod "MJExtension"
+    pod "YLGIFImage"
 end
 
 
