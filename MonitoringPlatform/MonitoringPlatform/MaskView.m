@@ -38,9 +38,39 @@
 
 
 - (IBAction)logoutButton:(id)sender {
-   
+    
+    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self];
+    hud.label.text = @"正在加载中...";
+    hud.mode = MBProgressHUDModeText;
+    [hud showAnimated:YES];
+    NSMutableDictionary *param = [NSMutableDictionary dictionaryWithCapacity:2];
+    param[@"cameralId"] = [[NSUserDefaults standardUserDefaults] objectForKey:@"cameraID"];
+    param[@"userId"] = [[NSUserDefaults standardUserDefaults] objectForKey:@"uid"];;
+    [[HttpClient sharedClient] postPath:@"http://192.168.0.108:8081/giscoop/PreviewController/remove http/1.1" params:param resultBlock:^(id responseObject, NSError *error) {
+        if (!error) {
+            [self cleanDisk];
+            if ([responseObject[@"msg"] isEqualToString:@"成功"]) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hideAnimated:YES];
+                });
+            }
+        }else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [MBProgressHUD showError:[NSString stringWithFormat:@"%@",error]];
+            });
+        }
+    }];
 }
 
+- (void)cleanDisk {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:@"userName"];
+    [defaults removeObjectForKey:@"password"];
+    [defaults removeObjectForKey:@"cameraID"];
+    [defaults removeObjectForKey:@"deviceID"];
+    [defaults removeObjectForKey:@"uid"];
+    [defaults synchronize];
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

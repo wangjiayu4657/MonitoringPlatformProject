@@ -17,6 +17,7 @@
 #import "MBProgressHUD.h"
 #import "MBProgressHUD+XMG.h"
 #import "HttpClient.h"
+#import "MJExtension.h"
 
 //#import "VMSNetSDK.h"
 //#import "VMSNetSDKDataType.h"

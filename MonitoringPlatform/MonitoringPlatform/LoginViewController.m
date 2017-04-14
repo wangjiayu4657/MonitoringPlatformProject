@@ -29,13 +29,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
+
+
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+ 
+    NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"userName"];
+    NSString *password = [[NSUserDefaults standardUserDefaults] objectForKey:@"password"];
+    if (username.length > 0 && password.length > 0) {
+        [self performSegueWithIdentifier:@"pushHomeController" sender:nil];
+    }
 }
 
 - (void)keyBoardWillShow:(NSNotification *)notify {
@@ -72,7 +79,6 @@
 
 
 - (IBAction)loginButton:(UIButton *)sender {
-    
     [self login];
 }
 
@@ -120,6 +126,13 @@
     if ([self.uid stringValue].length > 0) {
         [[NSUserDefaults standardUserDefaults] setObject:self.uid forKey:@"uid"];
     }
+    if (self.accountField.text.length > 0) {
+        [[NSUserDefaults standardUserDefaults] setObject:self.accountField.text forKey:@"userName"];
+    }
+    if (self.passwordField.text.length > 0) {
+        [[NSUserDefaults standardUserDefaults] setObject:self.passwordField.text forKey:@"password"];
+    }
+    
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -142,24 +155,23 @@
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    NSLog(@"---%@",self.cameraID);
-    HomeViewController *destination = segue.destinationViewController;
-//    destination.cameraID = self.cameraID;
-//    destination.deviceID = self.deviceID;
-//    destination.uid = self.uid;
-    if ([destination respondsToSelector:@selector(setCameraID:)]) {
-        [destination setValue:self.cameraID forKey:@"cameraID"];
-    }
-    if ([destination respondsToSelector:@selector(setDeviceID:)]) {
-        [destination setValue:self.deviceID forKey:@"deviceID"];
-    }
-    if ([destination respondsToSelector:@selector(setUid:)]) {
-        [destination setValue:self.uid forKey:@"uid"];
-    }
-}
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    // Get the new view controller using [segue destinationViewController].
+//    // Pass the selected object to the new view controller.
+//    HomeViewController *destination = segue.destinationViewController;
+////    destination.cameraID = self.cameraID;
+////    destination.deviceID = self.deviceID;
+////    destination.uid = self.uid;
+//    if ([destination respondsToSelector:@selector(setCameraID:)]) {
+//        [destination setValue:self.cameraID forKey:@"cameraID"];
+//    }
+//    if ([destination respondsToSelector:@selector(setDeviceID:)]) {
+//        [destination setValue:self.deviceID forKey:@"deviceID"];
+//    }
+//    if ([destination respondsToSelector:@selector(setUid:)]) {
+//        [destination setValue:self.uid forKey:@"uid"];
+//    }
+//}
 
 
 @end

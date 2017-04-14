@@ -13,8 +13,8 @@ static id sharedClient = nil;
 
 NSString * const kDevelopmentAPIBaseURL = @"DevelopmentAPIBaseURLKey";
 NSString * const kAPIBaseURLDevelopment = @"http://192.168.20.111:8080";
-NSString * const kAPIBaseURLProduction  = @"http://app.m3w4.com";
-NSString * const kBeauticianErrorDomain = @"com.m3w4.beautician.httperror";
+NSString * const kAPIBaseURLProduction  = @"";
+NSString * const kBeauticianErrorDomain = @"";
 
 @interface HttpClient ()
 
@@ -76,9 +76,9 @@ NSString * const kBeauticianErrorDomain = @"com.m3w4.beautician.httperror";
                                                         URLString:URLString
                                                        parameters:mutableParams
                                                           success:^(NSURLSessionDataTask *task, id responseObject) {
-//          NSLog(@"Request URL: %@", [task.originalRequest.URL absoluteString]);
+          NSLog(@"Request URL: %@", [task.originalRequest.URL absoluteString]);
 //          NSLog(@"Response Object:\n%@", responseObject);
-//          NSLog(@"Response Headers:\n%@", ((NSHTTPURLResponse *)(task.response)).allHeaderFields);
+          NSLog(@"Response Headers:\n%@", ((NSHTTPURLResponse *)(task.response)).allHeaderFields);
           
           //              if ([responseObject isKindOfClass:[NSDictionary class]] == NO) {
           //                  responseObject = nil;

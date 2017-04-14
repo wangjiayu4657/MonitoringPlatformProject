@@ -4,7 +4,8 @@ target "MonitoringPlatform" do
 	pod "AFNetworking"
     pod "ReactiveObjC"
     pod "MBProgressHUD"
-    pod "SDWebImage"    
+    pod "SDWebImage"
+    pod "MJExtension"
 end
 
 

@@ -20,12 +20,14 @@
 @property (nonatomic,strong) NSDictionary *dict;
 
 /** timer */
-@property (nonatomic,strong) XTimer *timer1;
-@property (nonatomic,strong) XTimer *timer2;
+@property (nonatomic,strong) NSTimer *timer1;
+@property (nonatomic,strong) NSTimer *timer2;
 
-/** <#desciption#> */
+/** 蒙板 */
 @property (nonatomic,strong) MaskView *mview;
 @property (weak, nonatomic) IBOutlet UIButton *requestBtn;
+
+@property (nonatomic,assign)  CGFloat time;
 
 @end
 
@@ -40,13 +42,14 @@
 //    NSLog(@"uid:%@",self.uid);
     [self getUserInformation];
     
+    self.cameraID = [[NSUserDefaults standardUserDefaults] objectForKey:@"cameraID"];
+    self.uid = [[NSUserDefaults standardUserDefaults] objectForKey:@"uid"];
+    self.deviceID = [[NSUserDefaults standardUserDefaults] objectForKey:@"deviceID"];
+//    NSLog(@"cameraID ==== %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"cameraID"]);
+    
     NSData *data = UIImagePNGRepresentation([UIImage imageNamed:@"requestButton"]);
     [self.requestBtn setBackgroundImage:[UIImage sd_animatedGIFWithData:data] forState:UIControlStateNormal];
-    
-    
 }
-
-
 
 - (IBAction)requestButton:(UIButton *)sender {
     [self addMaskView];
@@ -60,8 +63,11 @@
 }
 
 - (void) initializeTimer {
-    self.timer1 = [XTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(heartbeatRequest) userInfo:nil repeats:YES];
-    self.timer2 = [XTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(requestPreview) userInfo:nil repeats:YES];
+    self.timer1 = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(heartbeatRequest) userInfo:nil repeats:YES];
+    self.timer2 = [NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(requestPreview) userInfo:nil repeats:YES];
+    
+    [[NSRunLoop currentRunLoop] addTimer:self.timer1 forMode:NSRunLoopCommonModes];
+    [[NSRunLoop currentRunLoop] addTimer:self.timer2 forMode:NSRunLoopCommonModes];
 }
 
 - (IBAction)logoutButton:(id)sender {
@@ -74,10 +80,10 @@
     param[@"userId"] = self.uid;
     [[HttpClient sharedClient] postPath:@"http://192.168.0.108:8081/giscoop/PreviewController/remove http/1.1" params:param resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
+            [self cleanDisk];
             if ([responseObject[@"msg"] isEqualToString:@"成功"]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hideAnimated:YES];
-                    
                 });
             }
         }else {
@@ -99,19 +105,21 @@
     dict[@"userId"] = [self.uid stringValue];
     [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/PreviewController/preview" params:dict resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
-            NSLog(@"预览:%@",responseObject);
+//            NSLog(@"预览:%@",responseObject);
             NSInteger code = [responseObject[@"code"] integerValue];
             if (code == 200) {
-                [self.timer2 stop];
                 [self.timer2 invalidate];
                 self.timer2 = nil;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.mview removeFromSuperview];
                     [hud hideAnimated:YES];
-                    [self performSegueWithIdentifier:@"pushCenterController" sender:nil];
+                    self.mview.contentLabel.text = responseObject[@"msg"];
+                    [self performSegueWithIdentifier:@"pushVideoController" sender:nil];
                 });
             }else {
-                self.mview.contentLabel.text = responseObject[@"msg"];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.mview.contentLabel.text = responseObject[@"msg"];
+                });
             }
         }else {
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -123,6 +131,14 @@
 
 ///心跳
 - (void) heartbeatRequest {
+    self.time += 3;
+    if (self.time == 60) {
+        self.time = 0;
+        [self.timer1 invalidate];
+        self.timer1 = nil;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"timeOverflows" object:nil];
+        
+    }
     MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
     hud.label.text = @"正在加载中...";
     hud.mode = MBProgressHUDModeText;
@@ -136,7 +152,6 @@
             if ([responseObject[@"msg"] isEqualToString:@"成功"]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hideAnimated:YES];
-                    //                    [self performSegueWithIdentifier:@"pushCenterController" sender:nil];
                 });
             }
         }else {
@@ -160,6 +175,7 @@
     [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/LoginInformationController/information" params:dict resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
             self.dict = responseObject[@"data"];
+            [User initWithDictionary:responseObject[@"data"]];
             if ([responseObject[@"msg"] isEqualToString:@"成功"]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hideAnimated:YES];
@@ -174,12 +190,21 @@
     }];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    UIViewController *destination = segue.destinationViewController;
-    NSLog(@"dict = %@",self.dict);
-    if ([destination respondsToSelector:@selector(setParam:)]) {
-        [destination setValue:self.dict forKey:@"param"];
-    }
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    UIViewController *destination = segue.destinationViewController;
+//    if ([destination respondsToSelector:@selector(setParam:)]) {
+//        [destination setValue:self.dict forKey:@"param"];
+//    }
+//}
+
+- (void)cleanDisk {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:@"userName"];
+    [defaults removeObjectForKey:@"password"];
+    [defaults removeObjectForKey:@"cameraID"];
+    [defaults removeObjectForKey:@"deviceID"];
+    [defaults removeObjectForKey:@"uid"];
+    [defaults synchronize];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -187,5 +212,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 @end

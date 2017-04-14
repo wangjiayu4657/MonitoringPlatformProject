@@ -32,8 +32,13 @@ static void *_vpHandle = NULL;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(timettt) name:@"timeOverflows" object:nil];
+    
     _selectedLineID = 1;
-    NSLog(@"%@",self.param);
+}
+
+- (void)timettt {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
