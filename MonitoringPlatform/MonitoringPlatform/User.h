@@ -15,5 +15,6 @@
 @property (nonatomic,strong) NSString *username;
 /** password */
 @property (nonatomic,strong) NSString *password;
-+ (instancetype) initWithDictionary:(NSDictionary *)dictionary;
++ (void) initWithDictionary:(NSDictionary *)dictionary;
++ (instancetype) shareUser;
 @end

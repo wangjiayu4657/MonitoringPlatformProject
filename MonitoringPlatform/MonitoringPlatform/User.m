@@ -10,10 +10,17 @@
 
 @implementation User
 
-+(instancetype)initWithDictionary:(NSDictionary *)dictionary {
-    User *user = [[self alloc] init];
-    [user setValuesForKeysWithDictionary:dictionary];
++ (instancetype)shareUser {
+    static User *user = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        user = [[self alloc] init];
+    });
     return user;
+}
++(void)initWithDictionary:(NSDictionary *)dictionary {
+    User *user = [User shareUser];
+    [user setValuesForKeysWithDictionary:dictionary];
 }
 
 - (void) setValue:(id)value forUndefinedKey:(NSString *)key {
