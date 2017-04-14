@@ -134,6 +134,7 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     _selectedLineID = [_lineList[row] lineID];
+    NSLog(@"_selectedLineID = %d",_selectedLineID);
 }
 
  #pragma mark - Navigation
