@@ -19,6 +19,7 @@
 		752E9C1A1E9F6A9A00B5CD49 /* MaskView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 752E9C191E9F6A9A00B5CD49 /* MaskView.xib */; };
 		752E9C1E1E9F7F3800B5CD49 /* MaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 752E9C1C1E9F7F3800B5CD49 /* MaskViewController.m */; };
 		752E9C1F1E9F7F3800B5CD49 /* MaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 752E9C1D1E9F7F3800B5CD49 /* MaskViewController.xib */; };
+		752E9C2A1EA06C3A00B5CD49 /* PlayVideoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 752E9C291EA06C3A00B5CD49 /* PlayVideoController.m */; };
 		75A484AC1E9DC8E3009A6C84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A484AB1E9DC8E3009A6C84 /* main.m */; };
 		75A484AF1E9DC8E3009A6C84 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75A484AE1E9DC8E3009A6C84 /* AppDelegate.mm */; };
 		75A484B51E9DC8E3009A6C84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75A484B31E9DC8E3009A6C84 /* Main.storyboard */; };
@@ -103,6 +104,8 @@
 		752E9C1B1E9F7F3800B5CD49 /* MaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaskViewController.h; sourceTree = "<group>"; };
 		752E9C1C1E9F7F3800B5CD49 /* MaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaskViewController.m; sourceTree = "<group>"; };
 		752E9C1D1E9F7F3800B5CD49 /* MaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaskViewController.xib; sourceTree = "<group>"; };
+		752E9C281EA06C3A00B5CD49 /* PlayVideoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayVideoController.h; sourceTree = "<group>"; };
+		752E9C291EA06C3A00B5CD49 /* PlayVideoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayVideoController.m; sourceTree = "<group>"; };
 		75A484A71E9DC8E3009A6C84 /* MonitoringPlatform.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonitoringPlatform.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A484AB1E9DC8E3009A6C84 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		75A484AD1E9DC8E3009A6C84 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -297,6 +300,8 @@
 				75A484AE1E9DC8E3009A6C84 /* AppDelegate.mm */,
 				75A484E01E9DC901009A6C84 /* HomeViewController.h */,
 				75A484E11E9DC901009A6C84 /* HomeViewController.m */,
+				752E9C281EA06C3A00B5CD49 /* PlayVideoController.h */,
+				752E9C291EA06C3A00B5CD49 /* PlayVideoController.m */,
 				75A484E21E9DC901009A6C84 /* LoginViewController.h */,
 				75A484DD1E9DC901009A6C84 /* LoginViewController.m */,
 				752E9C1B1E9F7F3800B5CD49 /* MaskViewController.h */,
@@ -692,6 +697,7 @@
 				75A4850E1E9E0BAC009A6C84 /* NSObject+AssociatedObject.m in Sources */,
 				75A485111E9E0BAC009A6C84 /* UIColor+Hex.m in Sources */,
 				75A484F31E9E0AFB009A6C84 /* HttpClient.m in Sources */,
+				752E9C2A1EA06C3A00B5CD49 /* PlayVideoController.m in Sources */,
 				75A484E51E9DC901009A6C84 /* HomeViewController.m in Sources */,
 				752E9C181E9F6A8B00B5CD49 /* MaskView.m in Sources */,
 			);

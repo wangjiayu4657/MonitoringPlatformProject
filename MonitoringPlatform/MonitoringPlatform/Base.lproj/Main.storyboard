@@ -232,11 +232,45 @@
                     <connections>
                         <outlet property="requestBtn" destination="6md-6H-7Ea" id="4XY-L5-yKw"/>
                         <segue destination="sLe-fs-1Qp" kind="show" identifier="pushCenterController" id="Xcg-Qo-rIX"/>
+                        <segue destination="CBb-x9-Hmp" kind="show" identifier="pushVideoController" id="8Bh-fz-ezK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oLA-cq-Ctn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="342" y="127"/>
+            <point key="canvasLocation" x="460" y="125"/>
+        </scene>
+        <!--Play Video Controller-->
+        <scene sceneID="nfW-b3-7fT">
+            <objects>
+                <viewController id="CBb-x9-Hmp" customClass="PlayVideoController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="paP-oC-9cN"/>
+                        <viewControllerLayoutGuide type="bottom" id="XHO-QA-r0I"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WVw-Z2-b4p">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1W6-du-RZI">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XHO-QA-r0I" firstAttribute="top" secondItem="1W6-du-RZI" secondAttribute="bottom" id="9LI-8u-wkP"/>
+                            <constraint firstItem="1W6-du-RZI" firstAttribute="leading" secondItem="WVw-Z2-b4p" secondAttribute="leading" id="PxG-Vb-tnF"/>
+                            <constraint firstAttribute="trailing" secondItem="1W6-du-RZI" secondAttribute="trailing" id="X7T-hO-K6s"/>
+                            <constraint firstItem="1W6-du-RZI" firstAttribute="top" secondItem="paP-oC-9cN" secondAttribute="bottom" id="cvO-L9-PI1"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="playView" destination="1W6-du-RZI" id="2zi-ud-NVG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EmU-8e-TaV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1246" y="-215"/>
         </scene>
         <!--demo演示-->
         <scene sceneID="tWe-Me-1DH">
@@ -332,7 +366,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6BE-tk-qbZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1068" y="125"/>
+            <point key="canvasLocation" x="1246" y="439"/>
         </scene>
     </scenes>
     <resources>
