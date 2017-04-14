@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VMSNetSDK.h"
 
 @interface PlayVideoController : UIViewController
+
+/** 数据 */
+@property (nonatomic,strong) NSDictionary *param;
+
+@property (nonatomic, strong) CCameraInfo *cameraInfo;
+@property (nonatomic, strong) CMSPInfo *mspInfo;
 
 @end
