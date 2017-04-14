@@ -8,12 +8,11 @@
 
 #import "HomeViewController.h"
 #import "ControlCenterViewController.h"
-#import "User.h"
 #import "XTimer.h"
 #import "MaskView.h"
 #import "NSData+ImageContentType.h"
 #import "UIImage+GIF.h"
-
+#import "User.h"
 @interface HomeViewController ()
 
 /** 请求数据 */
@@ -33,22 +32,26 @@
 
 @implementation HomeViewController
 
-
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    NSLog(@"camera:%@",self.cameraID);
 //    NSLog(@"uid:%@",self.uid);
     [self getUserInformation];
     
+//    NSLog(@"%@",user.uid);
+    
     self.cameraID = [[NSUserDefaults standardUserDefaults] objectForKey:@"cameraID"];
     self.uid = [[NSUserDefaults standardUserDefaults] objectForKey:@"uid"];
     self.deviceID = [[NSUserDefaults standardUserDefaults] objectForKey:@"deviceID"];
-//    NSLog(@"cameraID ==== %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"cameraID"]);
+    NSLog(@"cameraID ==== %@",self.cameraID);
+    NSLog(@"uid ==== %@",self.uid);
+    NSLog(@"deviceID ==== %@",self.deviceID);
     
-    NSData *data = UIImagePNGRepresentation([UIImage imageNamed:@"requestButton"]);
-    [self.requestBtn setBackgroundImage:[UIImage sd_animatedGIFWithData:data] forState:UIControlStateNormal];
+    NSString *filePath = [[NSBundle bundleWithPath:[[NSBundle mainBundle] bundlePath]] pathForResource:@"request" ofType:@"gif"];
+    NSData  *imageData = [NSData dataWithContentsOfFile:filePath];
+    self.requestBtn.imageView.backgroundColor = [UIColor clearColor];
+//    [self.requestBtn setBackgroundImage:[UIImage sd_animatedGIFWithData:imageData] forState:UIControlStateNormal];
+    [self.requestBtn setImage:[UIImage sd_animatedGIFWithData:imageData] forState:UIControlStateNormal];
 }
 
 - (IBAction)requestButton:(UIButton *)sender {
@@ -103,9 +106,10 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:2];
     dict[@"cameralId"] = self.cameraID;
     dict[@"userId"] = [self.uid stringValue];
+    NSLog(@"dict === %@",dict);
     [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/PreviewController/preview" params:dict resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
-//            NSLog(@"预览:%@",responseObject);
+            NSLog(@"预览:%@",responseObject);
             NSInteger code = [responseObject[@"code"] integerValue];
             if (code == 200) {
                 [self.timer2 invalidate];
@@ -132,23 +136,24 @@
 ///心跳
 - (void) heartbeatRequest {
     self.time += 3;
-    if (self.time == 60) {
+    if (self.time > 60 || self.time == 60) {
         self.time = 0;
         [self.timer1 invalidate];
         self.timer1 = nil;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"timeOverflows" object:nil];
-        
     }
     MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
     hud.label.text = @"正在加载中...";
     hud.mode = MBProgressHUDModeText;
     [hud showAnimated:YES];
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:2];
-    dict[@"cameralId"] = self.cameraID;
-    dict[@"userId"] = [self.uid stringValue];
-    [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/HeartbeatController/addHeart" params:dict resultBlock:^(id responseObject, NSError *error) {
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:2];
+    params[@"cameralId"] = self.cameraID;
+    params[@"userId"] = [self.uid stringValue];
+    NSLog(@"dict = %@",params);
+    
+    [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/HeartbeatController/addHeart" params:params resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
-//            NSLog(@"心跳 == %@",responseObject);
+            NSLog(@"心跳 == %@",responseObject);
             if ([responseObject[@"msg"] isEqualToString:@"成功"]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hideAnimated:YES];
@@ -174,7 +179,8 @@
     dict[@"userId"] = [self.uid stringValue];
     [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/LoginInformationController/information" params:dict resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
-            self.dict = responseObject[@"data"];
+            NSLog(@"平台消息:%@",responseObject);
+//            self.dict = responseObject[@"data"];
             [User initWithDictionary:responseObject[@"data"]];
             if ([responseObject[@"msg"] isEqualToString:@"成功"]) {
                 dispatch_async(dispatch_get_main_queue(), ^{

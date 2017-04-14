@@ -18,6 +18,7 @@
     });
     return user;
 }
+
 +(void)initWithDictionary:(NSDictionary *)dictionary {
     User *user = [User shareUser];
     [user setValuesForKeysWithDictionary:dictionary];

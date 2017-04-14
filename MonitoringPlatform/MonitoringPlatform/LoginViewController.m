@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "HomeViewController.h"
+#import "User.h"
 
 @interface LoginViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIView *backView;
@@ -38,11 +39,11 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
  
-    NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"userName"];
-    NSString *password = [[NSUserDefaults standardUserDefaults] objectForKey:@"password"];
-    if (username.length > 0 && password.length > 0) {
-        [self performSegueWithIdentifier:@"pushHomeController" sender:nil];
-    }
+//    NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"userName"];
+//    NSString *password = [[NSUserDefaults standardUserDefaults] objectForKey:@"password"];
+//    if (username.length > 0 && password.length > 0) {
+//        [self performSegueWithIdentifier:@"pushHomeController" sender:nil];
+//    }
 }
 
 - (void)keyBoardWillShow:(NSNotification *)notify {

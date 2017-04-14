@@ -10,23 +10,23 @@
 
 @implementation DeviceInfo
 
-+(instancetype)shareDevice {
-    static DeviceInfo *info = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        info = [[self alloc] init];
-    });
-    return info;
-}
-
-+ (void)initWithDictionary:(NSDictionary *)dic {
-    DeviceInfo *info = [DeviceInfo shareDevice];
-    [info setValuesForKeysWithDictionary:dic];
-}
-
-- (void) setValue:(id)value forUndefinedKey:(NSString *)key {
-    
-}
+//+(instancetype)shareDevice {
+//    static DeviceInfo *info = nil;
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        info = [[self alloc] init];
+//    });
+//    return info;
+//}
+//
+//+ (void)initWithDictionary:(NSDictionary *)dic {
+//    DeviceInfo *info = [DeviceInfo shareDevice];
+//    [info setValuesForKeysWithDictionary:dic];
+//}
+//
+//- (void) setValue:(id)value forUndefinedKey:(NSString *)key {
+//    
+//}
 
 
 @end

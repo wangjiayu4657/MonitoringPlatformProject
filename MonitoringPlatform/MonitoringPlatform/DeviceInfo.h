@@ -17,16 +17,16 @@
 @property (nonatomic,strong) NSString *deviceID;
 
 /** uid */
-@property (nonatomic,strong) NSNumber *uid;
+//@property (nonatomic,strong) NSNumber *uid;
 
-/** username */
-@property (nonatomic,strong) NSString *username;
-
-/** password */
-@property (nonatomic,strong) NSString *password;
-
-+ (void) initWithDictionary:(NSDictionary *)dic;
-
-+ (instancetype)shareDevice;
+///** username */
+//@property (nonatomic,strong) NSString *username;
+//
+///** password */
+//@property (nonatomic,strong) NSString *password;
+//
+//+ (void) initWithDictionary:(NSDictionary *)dic;
+//
+//+ (instancetype)shareDevice;
 
 @end

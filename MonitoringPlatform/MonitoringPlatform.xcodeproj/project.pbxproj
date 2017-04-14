@@ -21,6 +21,7 @@
 		752E9C1F1E9F7F3800B5CD49 /* MaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 752E9C1D1E9F7F3800B5CD49 /* MaskViewController.xib */; };
 		752E9C2A1EA06C3A00B5CD49 /* PlayVideoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 752E9C291EA06C3A00B5CD49 /* PlayVideoController.m */; };
 		752E9C341EA0C25D00B5CD49 /* DeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 752E9C331EA0C25D00B5CD49 /* DeviceInfo.m */; };
+		752E9C371EA0D51E00B5CD49 /* request.gif in Resources */ = {isa = PBXBuildFile; fileRef = 752E9C361EA0D51E00B5CD49 /* request.gif */; };
 		75A484AC1E9DC8E3009A6C84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A484AB1E9DC8E3009A6C84 /* main.m */; };
 		75A484AF1E9DC8E3009A6C84 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75A484AE1E9DC8E3009A6C84 /* AppDelegate.mm */; };
 		75A484B51E9DC8E3009A6C84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75A484B31E9DC8E3009A6C84 /* Main.storyboard */; };
@@ -109,6 +110,7 @@
 		752E9C291EA06C3A00B5CD49 /* PlayVideoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayVideoController.m; sourceTree = "<group>"; };
 		752E9C321EA0C25D00B5CD49 /* DeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceInfo.h; sourceTree = "<group>"; };
 		752E9C331EA0C25D00B5CD49 /* DeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceInfo.m; sourceTree = "<group>"; };
+		752E9C361EA0D51E00B5CD49 /* request.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = request.gif; sourceTree = "<group>"; };
 		75A484A71E9DC8E3009A6C84 /* MonitoringPlatform.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonitoringPlatform.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A484AB1E9DC8E3009A6C84 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		75A484AD1E9DC8E3009A6C84 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 		75A484AA1E9DC8E3009A6C84 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				752E9C361EA0D51E00B5CD49 /* request.gif */,
 				75A484AB1E9DC8E3009A6C84 /* main.m */,
 				75A484E61E9DD02F009A6C84 /* PrefixHeader.pch */,
 			);
@@ -604,6 +607,7 @@
 			files = (
 				752E9C1F1E9F7F3800B5CD49 /* MaskViewController.xib in Resources */,
 				752E9C0A1E9F222400B5CD49 /* PlayViewController.xib in Resources */,
+				752E9C371EA0D51E00B5CD49 /* request.gif in Resources */,
 				752E9C1A1E9F6A9A00B5CD49 /* MaskView.xib in Resources */,
 				75A484BA1E9DC8E4009A6C84 /* LaunchScreen.storyboard in Resources */,
 				75A484B71E9DC8E4009A6C84 /* Assets.xcassets in Resources */,
