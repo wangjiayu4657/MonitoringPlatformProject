@@ -172,7 +172,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7gf-zs-tnl" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-332" y="126"/>
+            <point key="canvasLocation" x="-250" y="125"/>
         </scene>
         <!--请求预览-->
         <scene sceneID="ITR-9I-sr8">
@@ -231,7 +231,6 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="requestBtn" destination="6md-6H-7Ea" id="4XY-L5-yKw"/>
-                        <segue destination="sLe-fs-1Qp" kind="show" identifier="pushCenterController" id="Xcg-Qo-rIX"/>
                         <segue destination="CBb-x9-Hmp" kind="show" identifier="pushVideoController" id="8Bh-fz-ezK"/>
                     </connections>
                 </viewController>
@@ -271,103 +270,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EmU-8e-TaV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1246" y="-215"/>
-        </scene>
-        <!--demo演示-->
-        <scene sceneID="tWe-Me-1DH">
-            <objects>
-                <viewController id="sLe-fs-1Qp" customClass="ControlCenterViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="5ME-hI-B6Z"/>
-                        <viewControllerLayoutGuide type="bottom" id="5Kn-SS-sb4"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="bvU-Xr-Lzh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mGK-Fa-ITM">
-                                <rect key="frame" x="64" y="406" width="195" height="162"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iIt-1D-ig4">
-                                <rect key="frame" x="264" y="472" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="确定">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="confirmAction:" destination="sLe-fs-1Qp" eventType="touchUpInside" id="diL-hR-X7T"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="服务器地址：" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bAf-n5-t5x">
-                                <rect key="frame" x="75" y="113" width="225" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="URL"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="admin" borderStyle="roundedRect" placeholder="用户名：" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="14p-Mr-yJ9">
-                                <rect key="frame" x="75" y="189" width="225" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" spellCheckingType="no"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="wcsd1!2@" borderStyle="roundedRect" placeholder="密码：" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KsT-bB-x63">
-                                <rect key="frame" x="75" y="227" width="225" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" spellCheckingType="no" secureTextEntry="YES"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Demo-3.0SDK" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vD1-9u-pkR">
-                                <rect key="frame" x="132" y="84" width="111" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EOk-DA-i0q">
-                                <rect key="frame" x="75" y="265" width="225" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="登录">
-                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="loginAction:" destination="sLe-fs-1Qp" eventType="touchUpInside" id="ueT-P6-8N5"/>
-                                    <action selector="selectLineAction:" destination="sLe-fs-1Qp" eventType="touchUpInside" id="vuF-2g-qVM"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OQK-FQ-4KG">
-                                <rect key="frame" x="75" y="151" width="225" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="选择线路">
-                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="selectLineAction:" destination="sLe-fs-1Qp" eventType="touchUpInside" id="qXU-rR-gSM"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="demo演示" id="wi6-b7-XFy"/>
-                    <connections>
-                        <outlet property="confirmButton" destination="iIt-1D-ig4" id="7eY-LA-tRN"/>
-                        <outlet property="linePickerView" destination="mGK-Fa-ITM" id="T2C-Tu-VLE"/>
-                        <outlet property="loginButton" destination="EOk-DA-i0q" id="xy4-yD-bEn"/>
-                        <outlet property="passwordTextField" destination="KsT-bB-x63" id="kUo-5b-zVR"/>
-                        <outlet property="serverAddressTextField" destination="bAf-n5-t5x" id="Py2-fD-d95"/>
-                        <outlet property="userNameTextField" destination="14p-Mr-yJ9" id="whL-hg-YrQ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6BE-tk-qbZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1246" y="439"/>
+            <point key="canvasLocation" x="1161" y="125"/>
         </scene>
     </scenes>
     <resources>

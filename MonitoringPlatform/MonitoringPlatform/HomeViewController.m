@@ -7,8 +7,6 @@
 //
 
 #import "HomeViewController.h"
-#import "ControlCenterViewController.h"
-#import "XTimer.h"
 #import "MaskView.h"
 #import "NSData+ImageContentType.h"
 #import "UIImage+GIF.h"
@@ -41,9 +39,7 @@
     self.cameraID = [[NSUserDefaults standardUserDefaults] objectForKey:@"cameraID"];
     self.uid = [[NSUserDefaults standardUserDefaults] objectForKey:@"uid"];
     self.deviceID = [[NSUserDefaults standardUserDefaults] objectForKey:@"deviceID"];
-//    NSLog(@"cameraID ==== %@",self.cameraID);
-//    NSLog(@"uid ==== %@",self.uid);
-//    NSLog(@"deviceID ==== %@",self.deviceID);
+
     self.requestBtn.imageView.backgroundColor = [UIColor clearColor];
     [self.requestBtn setImage:[YLGIFImage imageNamed:@"request.gif"] forState:UIControlStateNormal];
 }
