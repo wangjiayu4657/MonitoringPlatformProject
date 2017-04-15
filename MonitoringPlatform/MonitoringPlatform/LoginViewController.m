@@ -45,6 +45,8 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+    [self.view endEditing:YES];
+    
 }
 
 - (void)keyBoardWillShow:(NSNotification *)notify {
@@ -68,8 +70,12 @@
 }
 
 
-///验证
-- (void)validation {
+- (IBAction)loginButton:(UIButton *)sender {
+    [self login];
+}
+
+///登录
+- (void) login {
     if (self.accountField.text.length == 0) {
         [MBProgressHUD showError:@"账号不能为空" toView:self.view];
         return;
@@ -77,15 +83,7 @@
         [MBProgressHUD showError:@"密码不能为空" toView:self.view];
         return;
     }
-}
-
-
-- (IBAction)loginButton:(UIButton *)sender {
-    [self login];
-}
-
-- (void) login {
-    [self validation];
+    [self.view endEditing:YES];
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.label.text = @"加载中...";
     hud.mode = MBProgressHUDModeText;

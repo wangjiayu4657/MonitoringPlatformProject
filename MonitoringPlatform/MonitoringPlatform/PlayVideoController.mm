@@ -39,7 +39,7 @@ static void *_vpHandle = NULL;
     if (self.compelete) {
         self.compelete();
     }
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示:" message:@"您的观看时间已结束，请从新排队观看!" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示:" message:@"您的观看时间已结束，请重新排队观看!" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"好" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self.navigationController popViewControllerAnimated:YES];
     }];
