@@ -51,6 +51,10 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    [self stopAllTimer];
+}
+
+- (void)stopAllTimer {
     [self.timer1 invalidate];
     self.timer1 = nil;
     [self.timer2 invalidate];
@@ -63,7 +67,16 @@
 }
 
 - (void)addMaskView {
+    __weak __typeof(&*self)weakSelf =self;
     self.mview = [[MaskView alloc] init];
+    
+    self.mview.backBlock = ^{
+        [weakSelf stopAllTimer];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf.mview removeFromSuperview];
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        });
+    };
     self.mview.contentLabel.text = @"当前在线2人,预计等候时间2分钟";
     [self.view addSubview:self.mview];
 }
@@ -84,17 +97,16 @@
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithCapacity:2];
     param[@"cameralId"] = self.cameraID;
     param[@"userId"] = self.uid;
+    NSLog(@"param = %@",param);
     [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/PreviewController/remove" params:param resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
             [self cleanDisk];
             NSLog(@"退出:%@",responseObject);
-            if ([responseObject[@"msg"] isEqualToString:@"成功"]) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [hud hideAnimated:YES];
-                    [hud removeFromSuperViewOnHide];
-                    [self.navigationController popViewControllerAnimated:YES];
-                });
-            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES];
+                [hud removeFromSuperViewOnHide];
+                [self.navigationController popViewControllerAnimated:YES];
+            });
         }else {
             [hud hideAnimated:YES];
             [hud removeFromSuperViewOnHide];

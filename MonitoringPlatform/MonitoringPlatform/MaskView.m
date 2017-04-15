@@ -49,12 +49,12 @@
     [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/PreviewController/remove" params:param resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
             [self cleanDisk];
-            if ([responseObject[@"msg"] isEqualToString:@"成功"]) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [hud hideAnimated:YES];
-                    [hud removeFromSuperViewOnHide];
-                });
-            }
+            !self.backBlock ? :self.backBlock();
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES];
+                [hud removeFromSuperViewOnHide];
+            });
+            
         }else {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [MBProgressHUD showError:[NSString stringWithFormat:@"%@",error]];
