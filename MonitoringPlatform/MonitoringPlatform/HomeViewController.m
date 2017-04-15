@@ -73,7 +73,7 @@
             [weakSelf.navigationController popViewControllerAnimated:YES];
         });
     };
-    self.mview.contentLabel.text = @"当前在线2人,预计等候时间2分钟";
+    self.mview.contentLabel.text = @"正在请求预览,清稍后...";
     [self.view addSubview:self.mview];
 }
 
@@ -124,7 +124,6 @@
                 self.timer2 = nil;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.mview removeFromSuperview];
-                    self.mview.contentLabel.text = responseObject[@"msg"];
                     [self performSegueWithIdentifier:@"pushVideoController" sender:nil];
                 });
             }else {
