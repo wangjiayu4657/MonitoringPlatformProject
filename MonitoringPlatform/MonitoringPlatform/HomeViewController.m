@@ -7,13 +7,12 @@
 //
 
 #import "HomeViewController.h"
-#import "ControlCenterViewController.h"
-#import "XTimer.h"
 #import "MaskView.h"
 #import "NSData+ImageContentType.h"
 #import "UIImage+GIF.h"
 #import "User.h"
 #import "YLGIFImage.h"
+#import "PlayVideoController.h"
 @interface HomeViewController ()
 
 /** 请求数据 */
@@ -41,9 +40,7 @@
     self.cameraID = [[NSUserDefaults standardUserDefaults] objectForKey:@"cameraID"];
     self.uid = [[NSUserDefaults standardUserDefaults] objectForKey:@"uid"];
     self.deviceID = [[NSUserDefaults standardUserDefaults] objectForKey:@"deviceID"];
-//    NSLog(@"cameraID ==== %@",self.cameraID);
-//    NSLog(@"uid ==== %@",self.uid);
-//    NSLog(@"deviceID ==== %@",self.deviceID);
+
     self.requestBtn.imageView.backgroundColor = [UIColor clearColor];
     [self.requestBtn setImage:[YLGIFImage imageNamed:@"request.gif"] forState:UIControlStateNormal];
 }
@@ -77,7 +74,8 @@
             [weakSelf.navigationController popViewControllerAnimated:YES];
         });
     };
-    self.mview.contentLabel.text = @"正在请求预览,请耐心等待...";
+
+    self.mview.contentLabel.text = @"正在请求预览,请稍后...";
     [self.view addSubview:self.mview];
 }
 
@@ -100,6 +98,7 @@
     param[@"userId"] = self.uid;
     [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/PreviewController/remove" params:param resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
+//            NSLog(@"退出:%@",responseObject);
             [self cleanDisk];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [hud hideAnimated:YES];
@@ -123,6 +122,7 @@
     dict[@"userId"] = [self.uid stringValue];
     [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/PreviewController/preview" params:dict resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
+//            NSLog(@"预览:%@",responseObject);
             NSInteger code = [responseObject[@"code"] integerValue];
             if (code == 200) {
                 [self.timer2 invalidate];
@@ -132,7 +132,9 @@
                     [self performSegueWithIdentifier:@"pushVideoController" sender:nil];
                 });
             }else {
-                self.mview.contentLabel.text = responseObject[@"msg"];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.mview.contentLabel.text = [NSString stringWithFormat:@"当前在线人数%@人,预计等候时间2分钟",responseObject[@"msg"]];
+                });
             }
         }else {
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -151,7 +153,7 @@
         self.timer1 = nil;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"timeOverflows" object:nil];
     }
-   
+//    NSLog(@"%.1f",self.time);
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:2];
     params[@"cameralId"] = self.cameraID;
     params[@"userId"] = [self.uid stringValue];
@@ -179,7 +181,7 @@
     dict[@"userId"] = [self.uid stringValue];
     [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/LoginInformationController/information" params:dict resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
-            self.dict = responseObject[@"data"];
+//            NSLog(@"平台:%@",responseObject);
             [User initWithDictionary:responseObject[@"data"]];
             if ([responseObject[@"msg"] isEqualToString:@"成功"]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -196,10 +198,11 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    UIViewController *destination = segue.destinationViewController;
-    if ([destination respondsToSelector:@selector(setParam:)]) {
-        [destination setValue:self.dict forKey:@"param"];
-    }
+
+    PlayVideoController *destination = segue.destinationViewController;
+    destination.compelete = ^{
+        [self stopAllTimer];
+    };
 }
 
 - (void)cleanDisk {

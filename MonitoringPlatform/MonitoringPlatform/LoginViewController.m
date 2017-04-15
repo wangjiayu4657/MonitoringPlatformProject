@@ -95,6 +95,7 @@
     parame[@"password"] = self.passwordField.text;
     [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/LoginInformationController/loginInformation" params:parame resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
+            NSLog(@"responseObject = %@",responseObject);
             if ([responseObject[@"msg"] isEqualToString:@"登录成功"]) {
                 if (responseObject[@"data"][@"mUserCameral"] != nil) {
                     [self saveUserInformation:responseObject[@"data"]];

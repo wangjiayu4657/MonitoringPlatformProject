@@ -8,18 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		555C09F249D1EEDAE218330F /* Pods_MonitoringPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA483C96F71D5E977EDC7AB /* Pods_MonitoringPlatform.framework */; };
-		752E9BF51E9E75D700B5CD49 /* ResourceTreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 752E9BF41E9E75D700B5CD49 /* ResourceTreeViewController.m */; };
 		752E9BF71E9E814300B5CD49 /* libz.1.1.3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 752E9BF61E9E814300B5CD49 /* libz.1.1.3.tbd */; };
 		752E9BF91E9E828A00B5CD49 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 752E9BF81E9E828A00B5CD49 /* AFNetworking.framework */; };
-		752E9C091E9F222400B5CD49 /* PlayViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 752E9C071E9F222400B5CD49 /* PlayViewController.mm */; };
-		752E9C0A1E9F222400B5CD49 /* PlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 752E9C081E9F222400B5CD49 /* PlayViewController.xib */; };
 		752E9C101E9F510900B5CD49 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 752E9C0F1E9F510900B5CD49 /* User.m */; };
-		752E9C151E9F629300B5CD49 /* XTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 752E9C141E9F629300B5CD49 /* XTimer.m */; };
 		752E9C181E9F6A8B00B5CD49 /* MaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 752E9C171E9F6A8B00B5CD49 /* MaskView.m */; };
 		752E9C1A1E9F6A9A00B5CD49 /* MaskView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 752E9C191E9F6A9A00B5CD49 /* MaskView.xib */; };
-		752E9C2A1EA06C3A00B5CD49 /* PlayVideoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 752E9C291EA06C3A00B5CD49 /* PlayVideoController.m */; };
-		752E9C341EA0C25D00B5CD49 /* DeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 752E9C331EA0C25D00B5CD49 /* DeviceInfo.m */; };
 		752E9C371EA0D51E00B5CD49 /* request.gif in Resources */ = {isa = PBXBuildFile; fileRef = 752E9C361EA0D51E00B5CD49 /* request.gif */; };
+		758634541EA2198E00C422F8 /* PlayVideoController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 758634531EA2198E00C422F8 /* PlayVideoController.mm */; };
 		75A484AC1E9DC8E3009A6C84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A484AB1E9DC8E3009A6C84 /* main.m */; };
 		75A484AF1E9DC8E3009A6C84 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 75A484AE1E9DC8E3009A6C84 /* AppDelegate.mm */; };
 		75A484B51E9DC8E3009A6C84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75A484B31E9DC8E3009A6C84 /* Main.storyboard */; };
@@ -66,7 +61,6 @@
 		75A485571E9E1168009A6C84 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75A485561E9E1168009A6C84 /* VideoToolbox.framework */; };
 		75A485591E9E1173009A6C84 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75A485581E9E1173009A6C84 /* GLKit.framework */; };
 		75A4855B1E9E1181009A6C84 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75A4855A1E9E1181009A6C84 /* CoreMedia.framework */; };
-		75A4855E1E9E36E7009A6C84 /* ControlCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A4855D1E9E36E7009A6C84 /* ControlCenterViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,26 +81,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		752E9BF31E9E75D700B5CD49 /* ResourceTreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceTreeViewController.h; sourceTree = "<group>"; };
-		752E9BF41E9E75D700B5CD49 /* ResourceTreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceTreeViewController.m; sourceTree = "<group>"; };
 		752E9BF61E9E814300B5CD49 /* libz.1.1.3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.1.3.tbd; path = usr/lib/libz.1.1.3.tbd; sourceTree = SDKROOT; };
 		752E9BF81E9E828A00B5CD49 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = "../../Library/Developer/Xcode/DerivedData/MonitoringPlatform-dqvotvstviwwuwbqntdmcplgrimt/Build/Products/Debug-iphoneos/AFNetworking/AFNetworking.framework"; sourceTree = "<group>"; };
-		752E9C061E9F222400B5CD49 /* PlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayViewController.h; sourceTree = "<group>"; };
-		752E9C071E9F222400B5CD49 /* PlayViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayViewController.mm; sourceTree = "<group>"; };
-		752E9C081E9F222400B5CD49 /* PlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayViewController.xib; sourceTree = "<group>"; };
 		752E9C0E1E9F510900B5CD49 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		752E9C0F1E9F510900B5CD49 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		752E9C131E9F629300B5CD49 /* XTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTimer.h; sourceTree = "<group>"; };
-		752E9C141E9F629300B5CD49 /* XTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTimer.m; sourceTree = "<group>"; };
 		752E9C161E9F6A8B00B5CD49 /* MaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaskView.h; sourceTree = "<group>"; };
 		752E9C171E9F6A8B00B5CD49 /* MaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaskView.m; sourceTree = "<group>"; };
 		752E9C191E9F6A9A00B5CD49 /* MaskView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaskView.xib; sourceTree = "<group>"; };
 		752E9C281EA06C3A00B5CD49 /* PlayVideoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayVideoController.h; sourceTree = "<group>"; };
-		752E9C291EA06C3A00B5CD49 /* PlayVideoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayVideoController.m; sourceTree = "<group>"; };
-		752E9C321EA0C25D00B5CD49 /* DeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceInfo.h; sourceTree = "<group>"; };
-		752E9C331EA0C25D00B5CD49 /* DeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceInfo.m; sourceTree = "<group>"; };
 		752E9C361EA0D51E00B5CD49 /* request.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = request.gif; sourceTree = "<group>"; };
-		75A484A71E9DC8E3009A6C84 /* MonitoringPlatform.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonitoringPlatform.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		758634531EA2198E00C422F8 /* PlayVideoController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayVideoController.mm; sourceTree = "<group>"; };
+		75A484A71E9DC8E3009A6C84 /* 卓感云视频.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "卓感云视频.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A484AB1E9DC8E3009A6C84 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		75A484AD1E9DC8E3009A6C84 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		75A484AE1E9DC8E3009A6C84 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
@@ -187,8 +172,6 @@
 		75A485561E9E1168009A6C84 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		75A485581E9E1173009A6C84 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		75A4855A1E9E1181009A6C84 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
-		75A4855C1E9E36E7009A6C84 /* ControlCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlCenterViewController.h; sourceTree = "<group>"; };
-		75A4855D1E9E36E7009A6C84 /* ControlCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlCenterViewController.m; sourceTree = "<group>"; };
 		811364BD3C4E43455606F8E1 /* Pods-MonitoringPlatform.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MonitoringPlatform.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MonitoringPlatform/Pods-MonitoringPlatform.debug.xcconfig"; sourceTree = "<group>"; };
 		8DAAFE01936F4455F838601F /* Pods-MonitoringPlatform.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MonitoringPlatform.release.xcconfig"; path = "Pods/Target Support Files/Pods-MonitoringPlatform/Pods-MonitoringPlatform.release.xcconfig"; sourceTree = "<group>"; };
 		CBA483C96F71D5E977EDC7AB /* Pods_MonitoringPlatform.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MonitoringPlatform.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -255,15 +238,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		752E9C121E9F629300B5CD49 /* XTimer */ = {
-			isa = PBXGroup;
-			children = (
-				752E9C131E9F629300B5CD49 /* XTimer.h */,
-				752E9C141E9F629300B5CD49 /* XTimer.m */,
-			);
-			path = XTimer;
-			sourceTree = "<group>";
-		};
 		75A4849E1E9DC8E3009A6C84 = {
 			isa = PBXGroup;
 			children = (
@@ -279,7 +253,7 @@
 		75A484A81E9DC8E3009A6C84 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				75A484A71E9DC8E3009A6C84 /* MonitoringPlatform.app */,
+				75A484A71E9DC8E3009A6C84 /* 卓感云视频.app */,
 				75A484C01E9DC8E4009A6C84 /* MonitoringPlatformTests.xctest */,
 				75A484CB1E9DC8E4009A6C84 /* MonitoringPlatformUITests.xctest */,
 			);
@@ -289,7 +263,6 @@
 		75A484A91E9DC8E3009A6C84 /* MonitoringPlatform */ = {
 			isa = PBXGroup;
 			children = (
-				752E9C121E9F629300B5CD49 /* XTimer */,
 				75A485171E9E1045009A6C84 /* MCRSDK */,
 				75A4851B1E9E1045009A6C84 /* VideoPlaySDK */,
 				75A485241E9E1045009A6C84 /* VMSNetSDK */,
@@ -301,23 +274,14 @@
 				75A484E01E9DC901009A6C84 /* HomeViewController.h */,
 				75A484E11E9DC901009A6C84 /* HomeViewController.m */,
 				752E9C281EA06C3A00B5CD49 /* PlayVideoController.h */,
-				752E9C291EA06C3A00B5CD49 /* PlayVideoController.m */,
+				758634531EA2198E00C422F8 /* PlayVideoController.mm */,
 				75A484E21E9DC901009A6C84 /* LoginViewController.h */,
 				75A484DD1E9DC901009A6C84 /* LoginViewController.m */,
-				75A4855C1E9E36E7009A6C84 /* ControlCenterViewController.h */,
-				75A4855D1E9E36E7009A6C84 /* ControlCenterViewController.m */,
-				752E9BF31E9E75D700B5CD49 /* ResourceTreeViewController.h */,
-				752E9BF41E9E75D700B5CD49 /* ResourceTreeViewController.m */,
-				752E9C061E9F222400B5CD49 /* PlayViewController.h */,
-				752E9C071E9F222400B5CD49 /* PlayViewController.mm */,
-				752E9C081E9F222400B5CD49 /* PlayViewController.xib */,
 				752E9C161E9F6A8B00B5CD49 /* MaskView.h */,
 				752E9C171E9F6A8B00B5CD49 /* MaskView.m */,
 				752E9C191E9F6A9A00B5CD49 /* MaskView.xib */,
 				752E9C0E1E9F510900B5CD49 /* User.h */,
 				752E9C0F1E9F510900B5CD49 /* User.m */,
-				752E9C321EA0C25D00B5CD49 /* DeviceInfo.h */,
-				752E9C331EA0C25D00B5CD49 /* DeviceInfo.m */,
 				75A484B31E9DC8E3009A6C84 /* Main.storyboard */,
 				75A484B61E9DC8E4009A6C84 /* Assets.xcassets */,
 				75A484B81E9DC8E4009A6C84 /* LaunchScreen.storyboard */,
@@ -505,7 +469,7 @@
 			);
 			name = MonitoringPlatform;
 			productName = MonitoringPlatform;
-			productReference = 75A484A71E9DC8E3009A6C84 /* MonitoringPlatform.app */;
+			productReference = 75A484A71E9DC8E3009A6C84 /* 卓感云视频.app */;
 			productType = "com.apple.product-type.application";
 		};
 		75A484BF1E9DC8E4009A6C84 /* MonitoringPlatformTests */ = {
@@ -597,7 +561,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				752E9C0A1E9F222400B5CD49 /* PlayViewController.xib in Resources */,
 				752E9C371EA0D51E00B5CD49 /* request.gif in Resources */,
 				752E9C1A1E9F6A9A00B5CD49 /* MaskView.xib in Resources */,
 				75A484BA1E9DC8E4009A6C84 /* LaunchScreen.storyboard in Resources */,
@@ -676,7 +639,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				75A4850F1E9E0BAC009A6C84 /* NSString+Encoding.m in Sources */,
-				752E9C341EA0C25D00B5CD49 /* DeviceInfo.m in Sources */,
 				75A485121E9E0BAC009A6C84 /* UIImage+Utilities.m in Sources */,
 				75A484E31E9DC901009A6C84 /* LoginViewController.m in Sources */,
 				75A4850C1E9E0BAC009A6C84 /* NSNull+OVNatural.m in Sources */,
@@ -684,20 +646,16 @@
 				75A485141E9E0BAC009A6C84 /* UITextView+Placeholder.m in Sources */,
 				75A4850B1E9E0BAC009A6C84 /* NSData+Encoding.m in Sources */,
 				75A484AF1E9DC8E3009A6C84 /* AppDelegate.mm in Sources */,
-				752E9C151E9F629300B5CD49 /* XTimer.m in Sources */,
+				758634541EA2198E00C422F8 /* PlayVideoController.mm in Sources */,
 				752E9C101E9F510900B5CD49 /* User.m in Sources */,
 				75A485131E9E0BAC009A6C84 /* UIImageView+Additions.m in Sources */,
-				752E9BF51E9E75D700B5CD49 /* ResourceTreeViewController.m in Sources */,
-				752E9C091E9F222400B5CD49 /* PlayViewController.mm in Sources */,
 				75A485151E9E0BAC009A6C84 /* UIView+BorderLine.m in Sources */,
 				75A4850D1E9E0BAC009A6C84 /* NSObject+Additions.m in Sources */,
 				75A484AC1E9DC8E3009A6C84 /* main.m in Sources */,
 				75A484EE1E9DD5BA009A6C84 /* MBProgressHUD+XMG.m in Sources */,
-				75A4855E1E9E36E7009A6C84 /* ControlCenterViewController.m in Sources */,
 				75A4850E1E9E0BAC009A6C84 /* NSObject+AssociatedObject.m in Sources */,
 				75A485111E9E0BAC009A6C84 /* UIColor+Hex.m in Sources */,
 				75A484F31E9E0AFB009A6C84 /* HttpClient.m in Sources */,
-				752E9C2A1EA06C3A00B5CD49 /* PlayVideoController.m in Sources */,
 				75A484E51E9DC901009A6C84 /* HomeViewController.m in Sources */,
 				752E9C181E9F6A8B00B5CD49 /* MaskView.m in Sources */,
 			);
@@ -876,7 +834,8 @@
 					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhuogan.Mornitor;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+
+				PRODUCT_NAME = "卓感云视频";
 				PROVISIONING_PROFILE = "20a63609-b103-4cdf-b8f5-a8394670188d";
 				PROVISIONING_PROFILE_SPECIFIER = MornitorDevlopment;
 			};
@@ -912,7 +871,8 @@
 					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhuogan.Mornitor;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+
+				PRODUCT_NAME = "卓感云视频";
 				PROVISIONING_PROFILE = "1795adef-9c6d-43a3-aaa8-3e4876521e91";
 				PROVISIONING_PROFILE_SPECIFIER = MornitorAdHoc;
 			};
