@@ -48,7 +48,6 @@ static void *_vpHandle = NULL;
     self.mspInfo = [[CMSPInfo alloc] init];
     VMSNetSDK *vmsNetSDK = [VMSNetSDK shareInstance];
     User *user = [User shareUser];
-    NSLog(@"%@ \n %@ \n %@",user.servaddr,user.username,user.password);
     BOOL result = [vmsNetSDK login:user.servaddr
                         toUserName:user.username
                         toPassword:user.password
@@ -63,7 +62,6 @@ static void *_vpHandle = NULL;
         [alertView show];
         return;
     }
-    NSLog(@"mspInfo = %@",self.mspInfo);
     [self playVideo];
 }
 
@@ -78,10 +76,10 @@ void StatusCallBack(PLAY_STATE playState, VP_HANDLE hLogin, void *pHandl)
     User *user = [User shareUser];
     NSString *cameraID = [[NSUserDefaults standardUserDefaults] objectForKey:@"cameraID"];
     NSString *deviceID = [[NSUserDefaults standardUserDefaults] objectForKey:@"deviceID"];
-    NSLog(@"_serverAddress = %@",user.servaddr);
-    NSLog(@"sessionID = %@",_mspInfo.sessionID);
-    NSLog(@"cameraID = %@",cameraID);
-    NSLog(@"_realPlayURL = %@",_realPlayURL);
+//    NSLog(@"_serverAddress = %@",user.servaddr);
+//    NSLog(@"sessionID = %@",_mspInfo.sessionID);
+//    NSLog(@"cameraID = %@",cameraID);
+//    NSLog(@"_realPlayURL = %@",_realPlayURL);
     //获取播放地址
     VMSNetSDK *vmsNetSDK = [VMSNetSDK shareInstance];
     _realPlayURL = [[CRealPlayURL alloc] init];

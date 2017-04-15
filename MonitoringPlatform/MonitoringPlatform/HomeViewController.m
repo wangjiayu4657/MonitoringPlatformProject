@@ -67,7 +67,7 @@
 }
 
 - (void)addMaskView {
-    __weak __typeof(&*self)weakSelf =self;
+    __weak __typeof(self)weakSelf = self;
     self.mview = [[MaskView alloc] init];
     
     self.mview.backBlock = ^{
@@ -97,11 +97,9 @@
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithCapacity:2];
     param[@"cameralId"] = self.cameraID;
     param[@"userId"] = self.uid;
-    NSLog(@"param = %@",param);
     [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/PreviewController/remove" params:param resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
             [self cleanDisk];
-            NSLog(@"退出:%@",responseObject);
             dispatch_async(dispatch_get_main_queue(), ^{
                 [hud hideAnimated:YES];
                 [hud removeFromSuperViewOnHide];
@@ -122,10 +120,8 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:2];
     dict[@"cameralId"] = self.cameraID;
     dict[@"userId"] = [self.uid stringValue];
-//    NSLog(@"dict === %@",dict);
     [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/PreviewController/preview" params:dict resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
-            NSLog(@"预览:%@",responseObject);
             NSInteger code = [responseObject[@"code"] integerValue];
             if (code == 200) {
                 [self.timer2 invalidate];
@@ -161,11 +157,10 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:2];
     params[@"cameralId"] = self.cameraID;
     params[@"userId"] = [self.uid stringValue];
-    NSLog(@"dict = %@",params);
     
     [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/HeartbeatController/addHeart" params:params resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
-            NSLog(@"心跳 == %@",responseObject);
+
         }else {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [MBProgressHUD showError:[NSString stringWithFormat:@"%@",error]];
@@ -186,8 +181,6 @@
     dict[@"userId"] = [self.uid stringValue];
     [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/LoginInformationController/information" params:dict resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
-            NSLog(@"平台消息:%@",responseObject);
-//            self.dict = responseObject[@"data"];
             [User initWithDictionary:responseObject[@"data"]];
             if ([responseObject[@"msg"] isEqualToString:@"成功"]) {
                 dispatch_async(dispatch_get_main_queue(), ^{

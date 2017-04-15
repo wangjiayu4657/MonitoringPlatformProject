@@ -32,7 +32,6 @@
 
     NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"userName"];
     NSString *password = [[NSUserDefaults standardUserDefaults] objectForKey:@"password"];
-    NSLog(@"username = %@  password = %@",username,password);
     if (username.length > 0 && password.length > 0) {
         [self performSegueWithIdentifier:@"pushHomeController" sender:nil];
     }
@@ -96,7 +95,6 @@
     parame[@"password"] = self.passwordField.text;
     [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/LoginInformationController/loginInformation" params:parame resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
-            NSLog(@"loginInfo = %@",responseObject);
             if ([responseObject[@"msg"] isEqualToString:@"登录成功"]) {
                 if (responseObject[@"data"][@"mUserCameral"] != nil) {
                     [self saveUserInformation:responseObject[@"data"]];
