@@ -50,6 +50,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
     [self.timer1 invalidate];
     self.timer1 = nil;
     [self.timer2 invalidate];
@@ -76,8 +77,8 @@
 }
 
 - (IBAction)logoutButton:(id)sender {
-    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
-    hud.label.text = @"正在退出中...";
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.label.text = @"正在退出登录...";
     hud.mode = MBProgressHUDModeText;
     [hud showAnimated:YES];
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithCapacity:2];
@@ -89,12 +90,13 @@
             NSLog(@"退出:%@",responseObject);
             if ([responseObject[@"msg"] isEqualToString:@"成功"]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-//                    [MBProgressHUD showSuccess:@"退出成功"];
                     [hud hideAnimated:YES];
+                    [hud removeFromSuperViewOnHide];
                     [self.navigationController popViewControllerAnimated:YES];
                 });
             }
         }else {
+            [hud hideAnimated:YES];
             [hud removeFromSuperViewOnHide];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [MBProgressHUD showError:[NSString stringWithFormat:@"%@",error]];
@@ -105,10 +107,6 @@
 
 ///请求预览
 - (void)requestPreview {
-    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
-    hud.label.text = @"正在加载中...";
-    hud.mode = MBProgressHUDModeText;
-    [hud showAnimated:YES];
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:2];
     dict[@"cameralId"] = self.cameraID;
     dict[@"userId"] = [self.uid stringValue];
@@ -122,7 +120,6 @@
                 self.timer2 = nil;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.mview removeFromSuperview];
-                    [hud hideAnimated:YES];
                     self.mview.contentLabel.text = responseObject[@"msg"];
                     [self performSegueWithIdentifier:@"pushVideoController" sender:nil];
                 });
@@ -148,10 +145,7 @@
         self.timer1 = nil;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"timeOverflows" object:nil];
     }
-    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
-    hud.label.text = @"正在加载中...";
-    hud.mode = MBProgressHUDModeText;
-    [hud showAnimated:YES];
+   
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:2];
     params[@"cameralId"] = self.cameraID;
     params[@"userId"] = [self.uid stringValue];
@@ -160,11 +154,6 @@
     [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/HeartbeatController/addHeart" params:params resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
             NSLog(@"心跳 == %@",responseObject);
-            if ([responseObject[@"msg"] isEqualToString:@"成功"]) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [hud hideAnimated:YES];
-                });
-            }
         }else {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [MBProgressHUD showError:[NSString stringWithFormat:@"%@",error]];
@@ -176,8 +165,8 @@
 
 ///获取平台信息
 - (void)getUserInformation {
-    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
-    hud.label.text = @"正在加载中...";
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.label.text = @"加载中...";
     hud.mode = MBProgressHUDModeText;
     [hud showAnimated:YES];
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:2];
@@ -191,7 +180,7 @@
             if ([responseObject[@"msg"] isEqualToString:@"成功"]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hideAnimated:YES];
-                    
+                    [hud removeFromSuperViewOnHide];
                 });
             }
         }else {

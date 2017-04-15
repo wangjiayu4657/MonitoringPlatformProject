@@ -39,19 +39,20 @@
 
 - (IBAction)logoutButton:(id)sender {
     
-    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self];
-    hud.label.text = @"正在加载中...";
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
+    hud.label.text = @"正在退出登录...";
     hud.mode = MBProgressHUDModeText;
     [hud showAnimated:YES];
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithCapacity:2];
     param[@"cameralId"] = [[NSUserDefaults standardUserDefaults] objectForKey:@"cameraID"];
     param[@"userId"] = [[NSUserDefaults standardUserDefaults] objectForKey:@"uid"];;
-    [[HttpClient sharedClient] postPath:@"http://192.168.0.108:8081/giscoop/PreviewController/remove http/1.1" params:param resultBlock:^(id responseObject, NSError *error) {
+    [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/PreviewController/remove" params:param resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
             [self cleanDisk];
             if ([responseObject[@"msg"] isEqualToString:@"成功"]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hideAnimated:YES];
+                    [hud removeFromSuperViewOnHide];
                 });
             }
         }else {

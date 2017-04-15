@@ -16,12 +16,12 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *distanceTop;
 
-/** cameraID */
-@property (nonatomic,strong) NSString *cameraID;
-/** deviceID */
-@property (nonatomic,strong) NSString *deviceID;
-/** uid */
-@property (nonatomic,strong) NSNumber *uid;
+///** cameraID */
+//@property (nonatomic,strong) NSString *cameraID;
+///** deviceID */
+//@property (nonatomic,strong) NSString *deviceID;
+///** uid */
+//@property (nonatomic,strong) NSNumber *uid;
 
 @end
 
@@ -87,8 +87,8 @@
 
 - (void) login {
     [self validation];
-    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
-    hud.label.text = @"正在加载中...";
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.label.text = @"加载中...";
     hud.mode = MBProgressHUDModeText;
     [hud showAnimated:YES];
     NSMutableDictionary *parame = [NSMutableDictionary dictionary];
@@ -103,6 +103,7 @@
                 }
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hideAnimated:YES];
+                    [hud removeFromSuperViewOnHide];
                     [self performSegueWithIdentifier:@"pushHomeController" sender:nil];
                 });
             }
@@ -116,18 +117,18 @@
 
 ///保存信息
 - (void) saveUserInformation:(NSDictionary *)dict {
-    self.cameraID = dict[@"mUserCameral"][@"cameraID"];
-    self.deviceID = dict[@"mUserCameral"][@"deviceID"];
-    self.uid = dict[@"uid"];
+    NSString *cameraID = dict[@"mUserCameral"][@"cameraID"];
+    NSString *deviceID = dict[@"mUserCameral"][@"deviceID"];
+    NSNumber *uid = dict[@"uid"];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (self.cameraID.length > 0) {
-        [defaults setObject:self.cameraID forKey:@"cameraID"];
+    if (cameraID.length > 0) {
+        [defaults setObject:cameraID forKey:@"cameraID"];
     }
-    if (self.deviceID.length > 0) {
-        [defaults setObject:self.deviceID forKey:@"deviceID"];
+    if (deviceID.length > 0) {
+        [defaults setObject:deviceID forKey:@"deviceID"];
     }
-    if ([self.uid stringValue].length > 0) {
-        [defaults setObject:self.uid forKey:@"uid"];
+    if ([uid stringValue].length > 0) {
+        [defaults setObject:uid forKey:@"uid"];
     }
     if (self.accountField.text.length > 0) {
         [defaults setObject:self.accountField.text forKey:@"userName"];
