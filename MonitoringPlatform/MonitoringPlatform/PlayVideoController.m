@@ -48,6 +48,10 @@ static void *_vpHandle = NULL;
     self.mspInfo = [[CMSPInfo alloc] init];
     VMSNetSDK *vmsNetSDK = [VMSNetSDK shareInstance];
     User *user = [User shareUser];
+    NSLog(@"servaddr = %@",user.servaddr);
+    NSLog(@"username = %@",user.username);
+    NSLog(@"password = %@",user.password);
+    NSLog(@"_selectedLineID = %d",_selectedLineID);
     BOOL result = [vmsNetSDK login:user.servaddr
                         toUserName:user.username
                         toPassword:user.password

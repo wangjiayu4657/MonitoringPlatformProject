@@ -519,7 +519,7 @@
 				TargetAttributes = {
 					75A484A61E9DC8E3009A6C84 = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = 9E42MM3WGC;
+						DevelopmentTeam = 98ZNZ3ZHK6;
 						ProvisioningStyle = Manual;
 					};
 					75A484BF1E9DC8E4009A6C84 = {
@@ -811,7 +811,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9E42MM3WGC;
+				DEVELOPMENT_TEAM = 98ZNZ3ZHK6;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MonitoringPlatform/PrefixHeader.pch";
 				INFOPLIST_FILE = MonitoringPlatform/Info.plist;
@@ -833,10 +833,10 @@
 					"\"ReactiveObjC\"",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xinju.testProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhuogan.Mornitor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "550caf1c-03ae-40d1-ad33-18ca9a425e8c";
-				PROVISIONING_PROFILE_SPECIFIER = testProjectDevelogment;
+				PROVISIONING_PROFILE = "20a63609-b103-4cdf-b8f5-a8394670188d";
+				PROVISIONING_PROFILE_SPECIFIER = MornitorDevlopment;
 			};
 			name = Debug;
 		};
@@ -847,7 +847,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = 9E42MM3WGC;
+				DEVELOPMENT_TEAM = 98ZNZ3ZHK6;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MonitoringPlatform/PrefixHeader.pch";
 				INFOPLIST_FILE = MonitoringPlatform/Info.plist;
@@ -869,10 +869,10 @@
 					"\"ReactiveObjC\"",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xinju.testProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhuogan.Mornitor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "086c59fb-6d5c-49f0-a77a-4d7a4362aaf1";
-				PROVISIONING_PROFILE_SPECIFIER = testProjecAdHoc;
+				PROVISIONING_PROFILE = "1795adef-9c6d-43a3-aaa8-3e4876521e91";
+				PROVISIONING_PROFILE_SPECIFIER = MornitorAdHoc;
 			};
 			name = Release;
 		};
