@@ -77,11 +77,12 @@
             [weakSelf.navigationController popViewControllerAnimated:YES];
         });
     };
-    self.mview.contentLabel.text = @"当前在线2人,预计等候时间2分钟";
+    self.mview.contentLabel.text = @"正在请求预览,请耐心等待...";
     [self.view addSubview:self.mview];
 }
 
 - (void) initializeTimer {
+    [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(requestPreview) userInfo:nil repeats:NO];
     self.timer1 = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(heartbeatRequest) userInfo:nil repeats:YES];
     self.timer2 = [NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(requestPreview) userInfo:nil repeats:YES];
     
@@ -128,13 +129,10 @@
                 self.timer2 = nil;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.mview removeFromSuperview];
-                    self.mview.contentLabel.text = responseObject[@"msg"];
                     [self performSegueWithIdentifier:@"pushVideoController" sender:nil];
                 });
             }else {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    self.mview.contentLabel.text = responseObject[@"msg"];
-                });
+                self.mview.contentLabel.text = responseObject[@"msg"];
             }
         }else {
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -181,6 +179,7 @@
     dict[@"userId"] = [self.uid stringValue];
     [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/LoginInformationController/information" params:dict resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
+            self.dict = responseObject[@"data"];
             [User initWithDictionary:responseObject[@"data"]];
             if ([responseObject[@"msg"] isEqualToString:@"成功"]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -196,12 +195,12 @@
     }];
 }
 
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    UIViewController *destination = segue.destinationViewController;
-//    if ([destination respondsToSelector:@selector(setParam:)]) {
-//        [destination setValue:self.dict forKey:@"param"];
-//    }
-//}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    UIViewController *destination = segue.destinationViewController;
+    if ([destination respondsToSelector:@selector(setParam:)]) {
+        [destination setValue:self.dict forKey:@"param"];
+    }
+}
 
 - (void)cleanDisk {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

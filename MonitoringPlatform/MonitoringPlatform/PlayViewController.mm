@@ -50,10 +50,12 @@ void StatusCallBack(PLAY_STATE playState, VP_HANDLE hLogin, void *pHandl)
     NSLog(@"_serverAddress = %@",_serverAddress);
     NSLog(@"sessionID = %@",_mspInfo.sessionID);
     NSLog(@"cameraID = %@",_cameraInfo.cameraID);
-    NSLog(@"_realPlayURL = %@",_realPlayURL);
+//    NSLog(@"_realPlayURL = %@",_realPlayURL);
     //获取播放地址
     VMSNetSDK *vmsNetSDK = [VMSNetSDK shareInstance];
     _realPlayURL = [[CRealPlayURL alloc] init];
+    NSLog(@"_realPlayURL1 = %@\n _realPlayURL1 = %@",_realPlayURL.url1,_realPlayURL.url2);
+    NSLog(@"_realPlayURL = %@",_realPlayURL);
     BOOL result = [vmsNetSDK getRealPlayURL:_serverAddress
                                 toSessionID:_mspInfo.sessionID
                                  toCameraID:_cameraInfo.cameraID
