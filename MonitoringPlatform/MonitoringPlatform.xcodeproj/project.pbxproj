@@ -736,6 +736,8 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEBUG_ACTIVITY_MODE = "";
+				"DEBUG_ACTIVITY_MODE[sdk=iphonesimulator*]" = disable;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -785,6 +787,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEBUG_ACTIVITY_MODE = "";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -834,7 +837,6 @@
 					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhuogan.Mornitor;
-
 				PRODUCT_NAME = "卓感云视频";
 				PROVISIONING_PROFILE = "20a63609-b103-4cdf-b8f5-a8394670188d";
 				PROVISIONING_PROFILE_SPECIFIER = MornitorDevlopment;
@@ -871,7 +873,6 @@
 					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhuogan.Mornitor;
-
 				PRODUCT_NAME = "卓感云视频";
 				PROVISIONING_PROFILE = "1795adef-9c6d-43a3-aaa8-3e4876521e91";
 				PROVISIONING_PROFILE_SPECIFIER = MornitorAdHoc;
