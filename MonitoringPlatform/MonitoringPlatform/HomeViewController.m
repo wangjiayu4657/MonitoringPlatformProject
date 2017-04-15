@@ -12,6 +12,7 @@
 #import "UIImage+GIF.h"
 #import "User.h"
 #import "YLGIFImage.h"
+#import "PlayVideoController.h"
 @interface HomeViewController ()
 
 /** 请求数据 */
@@ -95,7 +96,7 @@
     param[@"userId"] = self.uid;
     [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/PreviewController/remove" params:param resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
-            NSLog(@"退出:%@",responseObject);
+//            NSLog(@"退出:%@",responseObject);
             [self cleanDisk];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [hud hideAnimated:YES];
@@ -130,7 +131,7 @@
                 });
             }else {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    self.mview.contentLabel.text = responseObject[@"msg"];
+                    self.mview.contentLabel.text = [NSString stringWithFormat:@"当前在线人数%@人,预计等候时间2分钟",responseObject[@"msg"]];
                 });
             }
         }else {
@@ -150,7 +151,7 @@
         self.timer1 = nil;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"timeOverflows" object:nil];
     }
-   
+//    NSLog(@"%.1f",self.time);
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:2];
     params[@"cameralId"] = self.cameraID;
     params[@"userId"] = [self.uid stringValue];
@@ -194,12 +195,12 @@
     }];
 }
 
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    UIViewController *destination = segue.destinationViewController;
-//    if ([destination respondsToSelector:@selector(setParam:)]) {
-//        [destination setValue:self.dict forKey:@"param"];
-//    }
-//}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    PlayVideoController *destination = segue.destinationViewController;
+    destination.compelete = ^{
+        [self stopAllTimer];
+    };
+}
 
 - (void)cleanDisk {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

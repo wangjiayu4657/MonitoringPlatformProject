@@ -31,9 +31,20 @@ static void *_vpHandle = NULL;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(timeOut) name:@"timeOverflows" object:nil];
     _selectedLineID = 1;
-    NSLog(@"%@",self.param);
+}
+
+- (void)timeOut {
+    if (self.compelete) {
+        self.compelete();
+    }
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示:" message:@"您的观看时间已结束，请从新排队观看!" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"好" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    [alert addAction:ok];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -73,10 +84,10 @@ void StatusCallBack(PLAY_STATE playState, VP_HANDLE hLogin, void *pHandl)
     User *user = [User shareUser];
     NSString *cameraID = [[NSUserDefaults standardUserDefaults] objectForKey:@"cameraID"];
     NSString *deviceID = [[NSUserDefaults standardUserDefaults] objectForKey:@"deviceID"];
-    NSLog(@"_serverAddress = %@",user.servaddr);
-    NSLog(@"sessionID = %@",_mspInfo.sessionID);
-    NSLog(@"cameraID = %@",cameraID);
-    NSLog(@"_realPlayURL = %@",_realPlayURL);
+//    NSLog(@"_serverAddress = %@",user.servaddr);
+//    NSLog(@"sessionID = %@",_mspInfo.sessionID);
+//    NSLog(@"cameraID = %@",cameraID);
+//    NSLog(@"_realPlayURL = %@",_realPlayURL);
     //获取播放地址
     VMSNetSDK *vmsNetSDK = [VMSNetSDK shareInstance];
     _realPlayURL = [[CRealPlayURL alloc] init];
