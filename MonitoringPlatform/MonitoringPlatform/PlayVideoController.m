@@ -32,13 +32,18 @@ static void *_vpHandle = NULL;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(timettt) name:@"timeOverflows" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(timeOut) name:@"timeOverflows" object:nil];
     
     _selectedLineID = 1;
 }
 
-- (void)timettt {
-    [self.navigationController popViewControllerAnimated:YES];
+- (void)timeOut {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"您的观看时间已结束，请从新排队观看!" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"好" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    [alert addAction:ok];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -48,10 +53,10 @@ static void *_vpHandle = NULL;
     self.mspInfo = [[CMSPInfo alloc] init];
     VMSNetSDK *vmsNetSDK = [VMSNetSDK shareInstance];
     User *user = [User shareUser];
-    NSLog(@"servaddr = %@",user.servaddr);
-    NSLog(@"username = %@",user.username);
-    NSLog(@"password = %@",user.password);
-    NSLog(@"_selectedLineID = %d",_selectedLineID);
+//    NSLog(@"servaddr = %@",user.servaddr);
+//    NSLog(@"username = %@",user.username);
+//    NSLog(@"password = %@",user.password);
+//    NSLog(@"_selectedLineID = %d",_selectedLineID);
     BOOL result = [vmsNetSDK login:user.servaddr
                         toUserName:user.username
                         toPassword:user.password

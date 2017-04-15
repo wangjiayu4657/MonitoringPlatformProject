@@ -73,7 +73,7 @@
             [weakSelf.navigationController popViewControllerAnimated:YES];
         });
     };
-    self.mview.contentLabel.text = @"正在请求预览,清稍后...";
+    self.mview.contentLabel.text = @"正在请求预览,请稍后...";
     [self.view addSubview:self.mview];
 }
 
@@ -119,7 +119,7 @@
     dict[@"userId"] = [self.uid stringValue];
     [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/PreviewController/preview" params:dict resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
-            NSLog(@"预览:%@",responseObject);
+//            NSLog(@"预览:%@",responseObject);
             NSInteger code = [responseObject[@"code"] integerValue];
             if (code == 200) {
                 [self.timer2 invalidate];
@@ -178,7 +178,7 @@
     dict[@"userId"] = [self.uid stringValue];
     [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/LoginInformationController/information" params:dict resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
-            NSLog(@"平台:%@",responseObject);
+//            NSLog(@"平台:%@",responseObject);
             [User initWithDictionary:responseObject[@"data"]];
             if ([responseObject[@"msg"] isEqualToString:@"成功"]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
