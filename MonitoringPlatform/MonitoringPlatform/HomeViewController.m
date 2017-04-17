@@ -51,6 +51,7 @@
     [self stopAllTimer];
 }
 
+///停止所有的定时器
 - (void)stopAllTimer {
     [self.timer1 invalidate];
     self.timer1 = nil;
@@ -58,15 +59,17 @@
     self.timer2 = nil;
 }
 
+///请求预览按钮响应事件
 - (IBAction)requestButton:(UIButton *)sender {
     [self addMaskView];
     [self initializeTimer];
 }
 
+///添加蒙版
 - (void)addMaskView {
     __weak __typeof(self)weakSelf = self;
     self.mview = [[MaskView alloc] init];
-    
+    //回调
     self.mview.backBlock = ^{
         [weakSelf stopAllTimer];
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -78,15 +81,17 @@
     [self.view addSubview:self.mview];
 }
 
+///初始化定时器
 - (void) initializeTimer {
     [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(requestPreview) userInfo:nil repeats:NO];
     self.timer1 = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(heartbeatRequest) userInfo:nil repeats:YES];
     self.timer2 = [NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(requestPreview) userInfo:nil repeats:YES];
-    
+    //将定时器添加到runLoop中,防止定时器定时不准确
     [[NSRunLoop currentRunLoop] addTimer:self.timer1 forMode:NSRunLoopCommonModes];
     [[NSRunLoop currentRunLoop] addTimer:self.timer2 forMode:NSRunLoopCommonModes];
 }
 
+///退出按钮响应事件
 - (IBAction)logoutButton:(id)sender {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.label.text = @"正在退出登录...";
@@ -97,7 +102,7 @@
     param[@"userId"] = self.uid;
     [[HttpClient sharedClient] postPath:@"/giscoop/PreviewController/remove" params:param resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
-//            NSLog(@"退出:%@",responseObject);
+            //清除缓存
             [self cleanDisk];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [hud hideAnimated:YES];
@@ -121,7 +126,6 @@
     dict[@"userId"] = [self.uid stringValue];
     [[HttpClient sharedClient] postPath:@"/giscoop/PreviewController/preview" params:dict resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
-//            NSLog(@"预览:%@",responseObject);
             NSInteger code = [responseObject[@"code"] integerValue];
             if (code == 200) {
                 [self.timer2 invalidate];
@@ -143,7 +147,7 @@
     }];
 }
 
-///心跳
+///心跳请求
 - (void) heartbeatRequest {
     self.time += 3;
     if (self.time > 60 || self.time == 60) {
@@ -179,7 +183,6 @@
     dict[@"userId"] = [self.uid stringValue];
     [[HttpClient sharedClient] postPath:@"/giscoop/LoginInformationController/information" params:dict resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
-//            NSLog(@"平台:%@",responseObject);
             [User initWithDictionary:responseObject[@"data"]];
             if ([responseObject[@"msg"] isEqualToString:@"成功"]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -196,7 +199,6 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-
     PlayVideoController *destination = segue.destinationViewController;
     destination.compelete = ^{
         [self stopAllTimer];

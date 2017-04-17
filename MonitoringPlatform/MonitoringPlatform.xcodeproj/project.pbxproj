@@ -874,8 +874,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhuogan.Mornitor;
 				PRODUCT_NAME = "卓感云视频";
-				PROVISIONING_PROFILE = "1795adef-9c6d-43a3-aaa8-3e4876521e91";
-				PROVISIONING_PROFILE_SPECIFIER = MornitorAdHoc;
+				PROVISIONING_PROFILE = "ee1920f9-2366-4054-90b0-9cd306873978";
+				PROVISIONING_PROFILE_SPECIFIER = MornitorDistribution;
 			};
 			name = Release;
 		};

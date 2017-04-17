@@ -23,9 +23,6 @@ static void *_vpHandle = NULL;
 
 @implementation PlayVideoController{
     CRealPlayURL *_realPlayURL;
-    VP_HANDLE _handle;
-    BOOL _isPlayBacking;
-    CGFloat _startPlayBackTime;
     int _selectedLineID;
 }
 
@@ -35,6 +32,7 @@ static void *_vpHandle = NULL;
     _selectedLineID = 1;
 }
 
+///定时器溢出
 - (void)timeOut {
     if (self.compelete) {
         self.compelete();
@@ -54,7 +52,7 @@ static void *_vpHandle = NULL;
     self.mspInfo = [[CMSPInfo alloc] init];
     VMSNetSDK *vmsNetSDK = [VMSNetSDK shareInstance];
     User *user = [User shareUser];
-//    NSLog(@"%@ \n %@ \n %@",user.servaddr,user.username,user.password);
+
     BOOL result = [vmsNetSDK login:user.servaddr
                         toUserName:user.username
                         toPassword:user.password
@@ -62,20 +60,14 @@ static void *_vpHandle = NULL;
                      passwordLevel:3 //用户密码强度由开发者自行判断,强度由弱到强分别为0,1,2,3
                         toServInfo:self.mspInfo]; //方法执行后，msp信息将写入mapInfo
     if (NO == result) {
-//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-//                                                            message:@"登录失败"
-//                                                           delegate:nil cancelButtonTitle:@"好"
-//                                                  otherButtonTitles:nil, nil];
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"登录失败" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"好" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [self.navigationController popViewControllerAnimated:YES];
         }];
         [alert addAction:ok];
         [self presentViewController:alert animated:YES completion:nil];
-//        [alertView show];
         return;
     }
-//    NSLog(@"mspInfo = %@",self.mspInfo);
     [self playVideo];
 }
 
@@ -85,7 +77,7 @@ void StatusCallBack(PLAY_STATE playState, VP_HANDLE hLogin, void *pHandl)
     NSLog(@"playState is %d", playState);
 }
 
-
+///播放视屏
 - (void)playVideo {
     User *user = [User shareUser];
     NSString *cameraID = [[NSUserDefaults standardUserDefaults] objectForKey:@"cameraID"];
@@ -103,11 +95,6 @@ void StatusCallBack(PLAY_STATE playState, VP_HANDLE hLogin, void *pHandl)
                               toRealPlayURL:_realPlayURL
                                toStreamType:STREAM_SUB]; //StreamType＝0时，返回主码流和MAG地址，其＝1时返回子码流和MAG地址
     if (NO == result) {
-//        [[[UIAlertView alloc] initWithTitle:@"提示"
-//                                    message:@"获取播放地址失败"
-//                                   delegate:nil
-//                          cancelButtonTitle:@"好"
-//                          otherButtonTitles:nil, nil] show];
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"获取播放地址失败" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"好" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [self.navigationController popViewControllerAnimated:YES];

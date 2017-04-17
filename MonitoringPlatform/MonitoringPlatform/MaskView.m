@@ -36,7 +36,7 @@
     return self;
 }
 
-
+///退出,实则是返回上一界面
 - (IBAction)logoutButton:(id)sender {
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self animated:YES];

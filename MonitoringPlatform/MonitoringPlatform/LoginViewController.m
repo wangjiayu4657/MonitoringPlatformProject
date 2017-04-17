@@ -29,25 +29,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
-
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+
     [self showHomeContoller];
     [self.view endEditing:YES];
     self.accountField.text = nil;
     self.passwordField.text = nil;
-    
 }
 
+///如果第一次登陆后没有退出的话,则下次打开app直接进入首页
 - (void) showHomeContoller {
     NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"userName"];
     NSString *password = [[NSUserDefaults standardUserDefaults] objectForKey:@"password"];
@@ -56,6 +52,7 @@
     }
 }
 
+///监听键盘将要弹出
 - (void)keyBoardWillShow:(NSNotification *)notify {
     CGFloat duration = [notify.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     CGRect rect = [notify.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
@@ -68,6 +65,7 @@
     }
 }
 
+///监听键盘将要隐藏
 - (void)keyBoardWillHide:(NSNotification *)notify {
     CGFloat duration = [notify.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     self.distanceTop.constant = 245;
@@ -77,6 +75,7 @@
 }
 
 
+///登陆按钮响应事件
 - (IBAction)loginButton:(UIButton *)sender {
     [self login];
 }
@@ -102,7 +101,6 @@
     parame[@"password"] = self.passwordField.text;
     [[HttpClient sharedClient] postPath:@"/giscoop/LoginInformationController/loginInformation" params:parame resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
-            NSLog(@"responseObject = %@",responseObject);
             if ([responseObject[@"msg"] isEqualToString:@"登录成功"]) {
                 if (responseObject[@"data"][@"mUserCameral"] != nil) {
                     [self saveUserInformation:responseObject[@"data"]];
@@ -113,8 +111,7 @@
             }
         }else {
             dispatch_async(dispatch_get_main_queue(), ^{
-                
-                [MBProgressHUD showError:[NSString stringWithFormat:@"%@",error]];
+                [MBProgressHUD showError:@"用户名或密码有误，请重试···"];
             });
         }
     }];
@@ -150,6 +147,7 @@
     [self.view endEditing:YES];
 }
 
+///移除通知
 -(void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
