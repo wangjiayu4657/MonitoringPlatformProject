@@ -62,11 +62,17 @@ static void *_vpHandle = NULL;
                      passwordLevel:3 //用户密码强度由开发者自行判断,强度由弱到强分别为0,1,2,3
                         toServInfo:self.mspInfo]; //方法执行后，msp信息将写入mapInfo
     if (NO == result) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                            message:@"登录失败"
-                                                           delegate:nil cancelButtonTitle:@"好"
-                                                  otherButtonTitles:nil, nil];
-        [alertView show];
+//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+//                                                            message:@"登录失败"
+//                                                           delegate:nil cancelButtonTitle:@"好"
+//                                                  otherButtonTitles:nil, nil];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"登录失败" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"好" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+        [alert addAction:ok];
+        [self presentViewController:alert animated:YES completion:nil];
+//        [alertView show];
         return;
     }
     NSLog(@"mspInfo = %@",self.mspInfo);
