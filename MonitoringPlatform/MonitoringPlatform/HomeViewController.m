@@ -71,7 +71,7 @@
         [weakSelf stopAllTimer];
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf.mview removeFromSuperview];
-            [weakSelf.navigationController popViewControllerAnimated:YES];
+//            [weakSelf.navigationController popViewControllerAnimated:YES];
         });
     };
 
@@ -103,7 +103,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [hud hideAnimated:YES];
                 [hud removeFromSuperViewOnHide];
-                [self.navigationController popViewControllerAnimated:YES];
+//                [self.navigationController popViewControllerAnimated:YES];
             });
         }else {
             [hud hideAnimated:YES];
@@ -137,9 +137,9 @@
                 });
             }
         }else {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [MBProgressHUD showError:[NSString stringWithFormat:@"%@",error]];
-            });
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [MBProgressHUD showError:[NSString stringWithFormat:@"%@",error]];
+//            });
         }
     }];
 }
