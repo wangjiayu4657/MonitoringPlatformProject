@@ -84,17 +84,19 @@
 ///登录
 - (void) login {
     if (self.accountField.text.length == 0) {
-        [MBProgressHUD showError:@"账号不能为空" toView:self.view];
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.label.text = @"账号不能为空";
+        [hud hideAnimated:YES afterDelay:3.0];
         return;
     }else if (self.passwordField.text.length == 0) {
-        [MBProgressHUD showError:@"密码不能为空" toView:self.view];
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.label.text = @"密码不能为空";
+        [hud hideAnimated:YES afterDelay:3.0];
         return;
     }
     [self.view endEditing:YES];
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.label.text = @"加载中...";
-    hud.mode = MBProgressHUDModeText;
-    [hud showAnimated:YES];
     NSMutableDictionary *parame = [NSMutableDictionary dictionary];
     parame[@"userName"] = self.accountField.text;
     parame[@"password"] = self.passwordField.text;
@@ -106,15 +108,12 @@
                     [self saveUserInformation:responseObject[@"data"]];
                 }
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [hud hideAnimated:YES];
-                    [hud removeFromSuperViewOnHide];
                     [self performSegueWithIdentifier:@"pushHomeController" sender:nil];
                 });
             }
         }else {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [hud hideAnimated:YES];
-                [hud removeFromSuperViewOnHide];
+                
                 [MBProgressHUD showError:[NSString stringWithFormat:@"%@",error]];
             });
         }
