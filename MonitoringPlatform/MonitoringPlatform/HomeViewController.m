@@ -16,7 +16,7 @@
 @interface HomeViewController ()
 
 /** 请求数据 */
-@property (nonatomic,strong) NSDictionary *dict;
+//@property (nonatomic,strong) NSDictionary *dict;
 
 /** timer */
 @property (nonatomic,strong) NSTimer *timer1;

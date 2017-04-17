@@ -30,11 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"userName"];
-    NSString *password = [[NSUserDefaults standardUserDefaults] objectForKey:@"password"];
-    if (username.length > 0 && password.length > 0) {
-        [self performSegueWithIdentifier:@"pushHomeController" sender:nil];
-    }
+    
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -42,11 +38,22 @@
 
 
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
+    [self showHomeContoller];
     [self.view endEditing:YES];
+    self.accountField.text = nil;
+    self.passwordField.text = nil;
     
+}
+
+- (void) showHomeContoller {
+    NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"userName"];
+    NSString *password = [[NSUserDefaults standardUserDefaults] objectForKey:@"password"];
+    if (username.length > 0 && password.length > 0) {
+        [self performSegueWithIdentifier:@"pushHomeController" sender:nil];
+    }
 }
 
 - (void)keyBoardWillShow:(NSNotification *)notify {
@@ -106,6 +113,8 @@
             }
         }else {
             dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES];
+                [hud removeFromSuperViewOnHide];
                 [MBProgressHUD showError:[NSString stringWithFormat:@"%@",error]];
             });
         }
