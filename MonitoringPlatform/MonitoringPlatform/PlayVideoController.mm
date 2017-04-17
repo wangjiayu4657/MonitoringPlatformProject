@@ -54,7 +54,7 @@ static void *_vpHandle = NULL;
     self.mspInfo = [[CMSPInfo alloc] init];
     VMSNetSDK *vmsNetSDK = [VMSNetSDK shareInstance];
     User *user = [User shareUser];
-    NSLog(@"%@ \n %@ \n %@",user.servaddr,user.username,user.password);
+//    NSLog(@"%@ \n %@ \n %@",user.servaddr,user.username,user.password);
     BOOL result = [vmsNetSDK login:user.servaddr
                         toUserName:user.username
                         toPassword:user.password
@@ -75,7 +75,7 @@ static void *_vpHandle = NULL;
 //        [alertView show];
         return;
     }
-    NSLog(@"mspInfo = %@",self.mspInfo);
+//    NSLog(@"mspInfo = %@",self.mspInfo);
     [self playVideo];
 }
 
@@ -103,11 +103,17 @@ void StatusCallBack(PLAY_STATE playState, VP_HANDLE hLogin, void *pHandl)
                               toRealPlayURL:_realPlayURL
                                toStreamType:STREAM_SUB]; //StreamType＝0时，返回主码流和MAG地址，其＝1时返回子码流和MAG地址
     if (NO == result) {
-        [[[UIAlertView alloc] initWithTitle:@"提示"
-                                    message:@"获取播放地址失败"
-                                   delegate:nil
-                          cancelButtonTitle:@"好"
-                          otherButtonTitles:nil, nil] show];
+//        [[[UIAlertView alloc] initWithTitle:@"提示"
+//                                    message:@"获取播放地址失败"
+//                                   delegate:nil
+//                          cancelButtonTitle:@"好"
+//                          otherButtonTitles:nil, nil] show];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"获取播放地址失败" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"好" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+        [alert addAction:ok];
+        [self presentViewController:alert animated:YES completion:nil];
     }
     
     //获取设备信息
