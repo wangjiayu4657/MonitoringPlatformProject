@@ -90,13 +90,13 @@ void StatusCallBack(PLAY_STATE playState, VP_HANDLE hLogin, void *pHandl)
     User *user = [User shareUser];
     NSString *cameraID = [[NSUserDefaults standardUserDefaults] objectForKey:@"cameraID"];
     NSString *deviceID = [[NSUserDefaults standardUserDefaults] objectForKey:@"deviceID"];
-//    NSLog(@"_serverAddress = %@",user.servaddr);
-//    NSLog(@"sessionID = %@",_mspInfo.sessionID);
-//    NSLog(@"cameraID = %@",cameraID);
-//    NSLog(@"_realPlayURL = %@",_realPlayURL);
+    NSLog(@"_serverAddress = %@",user.servaddr);
+    NSLog(@"cameraID = %@",cameraID);
+    NSLog(@"sessionID = %@",_mspInfo.sessionID);
     //获取播放地址
     VMSNetSDK *vmsNetSDK = [VMSNetSDK shareInstance];
     _realPlayURL = [[CRealPlayURL alloc] init];
+    NSLog(@"_realPlayURL = %@",_realPlayURL);
     BOOL result = [vmsNetSDK getRealPlayURL:user.servaddr
                                 toSessionID:_mspInfo.sessionID
                                  toCameraID:cameraID

@@ -34,7 +34,7 @@ NSString * const kBeauticianErrorDomain = @"";
 {
     static dispatch_once_t oneceToken;
     dispatch_once(&oneceToken, ^{
-        sharedClient = [[self alloc] initWithBaseURL:nil];
+        sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:@"http://m.zhuogan.com.cn:9090"]];
     });
     return sharedClient;
 }
@@ -76,7 +76,7 @@ NSString * const kBeauticianErrorDomain = @"";
                                                         URLString:URLString
                                                        parameters:mutableParams
                                                           success:^(NSURLSessionDataTask *task, id responseObject) {
-//          NSLog(@"Request URL: %@", [task.originalRequest.URL absoluteString]);
+          NSLog(@"Request URL: %@", [task.originalRequest.URL absoluteString]);
 //          NSLog(@"Response Object:\n%@", responseObject);
 //          NSLog(@"Response Headers:\n%@", ((NSHTTPURLResponse *)(task.response)).allHeaderFields);
           

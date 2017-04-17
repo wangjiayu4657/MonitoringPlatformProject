@@ -71,7 +71,6 @@
         [weakSelf stopAllTimer];
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf.mview removeFromSuperview];
-//            [weakSelf.navigationController popViewControllerAnimated:YES];
         });
     };
 
@@ -96,14 +95,14 @@
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithCapacity:2];
     param[@"cameralId"] = self.cameraID;
     param[@"userId"] = self.uid;
-    [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/PreviewController/remove" params:param resultBlock:^(id responseObject, NSError *error) {
+    [[HttpClient sharedClient] postPath:@"/giscoop/PreviewController/remove" params:param resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
 //            NSLog(@"退出:%@",responseObject);
             [self cleanDisk];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [hud hideAnimated:YES];
                 [hud removeFromSuperViewOnHide];
-//                [self.navigationController popViewControllerAnimated:YES];
+                [self.navigationController popViewControllerAnimated:YES];
             });
         }else {
             [hud hideAnimated:YES];
@@ -120,7 +119,7 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:2];
     dict[@"cameralId"] = self.cameraID;
     dict[@"userId"] = [self.uid stringValue];
-    [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/PreviewController/preview" params:dict resultBlock:^(id responseObject, NSError *error) {
+    [[HttpClient sharedClient] postPath:@"/giscoop/PreviewController/preview" params:dict resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
 //            NSLog(@"预览:%@",responseObject);
             NSInteger code = [responseObject[@"code"] integerValue];
@@ -153,12 +152,11 @@
         self.timer1 = nil;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"timeOverflows" object:nil];
     }
-//    NSLog(@"%.1f",self.time);
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:2];
     params[@"cameralId"] = self.cameraID;
     params[@"userId"] = [self.uid stringValue];
     
-    [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/HeartbeatController/addHeart" params:params resultBlock:^(id responseObject, NSError *error) {
+    [[HttpClient sharedClient] postPath:@"/giscoop/HeartbeatController/addHeart" params:params resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
 
         }else {
@@ -179,7 +177,7 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:2];
     dict[@"cameralId"] = self.cameraID;
     dict[@"userId"] = [self.uid stringValue];
-    [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/LoginInformationController/information" params:dict resultBlock:^(id responseObject, NSError *error) {
+    [[HttpClient sharedClient] postPath:@"/giscoop/LoginInformationController/information" params:dict resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
 //            NSLog(@"平台:%@",responseObject);
             [User initWithDictionary:responseObject[@"data"]];

@@ -21,6 +21,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+//    [HttpClient startWithBaseURL:[NSURL URLWithString:@"http://m.zhuogan.com.cn:9090"]];
+    
     //初始化播放库
     InitLib();
     VP_InitSDK();

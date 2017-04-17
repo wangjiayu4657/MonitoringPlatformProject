@@ -48,7 +48,6 @@
     param[@"userId"] = [[NSUserDefaults standardUserDefaults] objectForKey:@"uid"];;
     [[HttpClient sharedClient] postPath:@"http://115.29.53.215:8084/giscoop/PreviewController/remove" params:param resultBlock:^(id responseObject, NSError *error) {
         if (!error) {
-            [self cleanDisk];
             !self.backBlock ? :self.backBlock();
             dispatch_async(dispatch_get_main_queue(), ^{
                 [hud hideAnimated:YES];
@@ -63,15 +62,6 @@
     }];
 }
 
-- (void)cleanDisk {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults removeObjectForKey:@"userName"];
-    [defaults removeObjectForKey:@"password"];
-    [defaults removeObjectForKey:@"cameraID"];
-    [defaults removeObjectForKey:@"deviceID"];
-    [defaults removeObjectForKey:@"uid"];
-    [defaults synchronize];
-}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
